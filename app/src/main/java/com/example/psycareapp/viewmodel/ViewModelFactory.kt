@@ -13,6 +13,9 @@ class ViewModelFactory(private val newsRepository: NewsRepository): ViewModelPro
             modelClass.isAssignableFrom(HomeViewModel::class.java) -> {
                 HomeViewModel(newsRepository) as T
             }
+            modelClass.isAssignableFrom(TestViewModel::class.java) -> {
+                TestViewModel() as T
+            }
             else -> throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
         }
     }
@@ -21,7 +24,7 @@ class ViewModelFactory(private val newsRepository: NewsRepository): ViewModelPro
         @Volatile
         private var instance: ViewModelFactory? = null
 
-        fun getInstance(context: Context): ViewModelFactory{
+        fun getInstance(): ViewModelFactory{
             return instance ?: synchronized(this){
                 instance ?: ViewModelFactory(Injection.provideRepositoryNews())
             }.also {
