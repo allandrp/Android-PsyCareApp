@@ -1,5 +1,6 @@
 package com.example.psycareapp
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
@@ -13,7 +14,7 @@ import com.example.psycareapp.viewmodel.ViewModelFactory
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private val homeViewModel: HomeViewModel by viewModels {
-        ViewModelFactory.getInstance(this)
+        ViewModelFactory.getInstance()
     }
     private val adapterNews = NewsAdapter()
 
@@ -34,5 +35,9 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+        binding.buttonTest.setOnClickListener {
+            val intent = Intent(this@MainActivity, TestActivity::class.java)
+            startActivity(intent)
+        }
     }
 }
