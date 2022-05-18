@@ -1,5 +1,12 @@
 <resources>
     <string name="app_name">PsyCareApp</string>
+    <string name="input_username">Masukkan Username</string>
+    <string name="psycare">PsyCare</string>
+    <string name="input_password">Masukkan Password</string>
+    <string name="login">LOGIN</string>
+    <string name="dont_have_an_account">Don’t have an account yet?</string>
+    <string name="daftar">DAFTAR</string>
+    <string name="we_care">We care what you care the most</string>
+    <string name="input_email">Masukkan Email Anda</string>
     <string name="dummy_desc_discussion">saya mau curhat tentang teman saya yang baru saja pergi meninggalkan saya, saya jadi sangat sedih dan stress untuk menghadapi masalahini, bagaimana seharusnya saya bertindak</string>
-    <!--    <string name="token_news_api">21dc2b9eaa954103aa5a5a9075b072ee</string>-->
 </resources>
