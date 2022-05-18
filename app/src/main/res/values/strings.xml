@@ -6,5 +6,7 @@
     <string name="login">LOGIN</string>
     <string name="dont_have_an_account">Don’t have an account yet?</string>
     <string name="daftar">DAFTAR</string>
+    <string name="we_care">We care what you care the most</string>
+    <string name="input_email">Masukkan Email Anda</string>
     <!--    <string name="token_news_api">21dc2b9eaa954103aa5a5a9075b072ee</string>-->
 </resources>

@@ -1,5 +1,6 @@
 package com.example.psycareapp
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
@@ -32,6 +33,11 @@ class MainActivity : AppCompatActivity() {
                     adapterNews.submitList(it.data.articles)
                 }
             }
+        }
+
+        binding.button.setOnClickListener {
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
         }
 
     }
