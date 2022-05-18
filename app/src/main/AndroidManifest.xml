@@ -18,6 +18,9 @@
             android:name=".LoginActivity"
             android:exported="false" />
         <activity
+            android:name=".TestActivity"
+            android:exported="false" />
+        <activity
             android:name=".DetailDiscussionActivity"
             android:exported="false" />
         <activity
