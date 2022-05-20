@@ -9,4 +9,15 @@
     <string name="we_care">We care what you care the most</string>
     <string name="input_email">Masukkan Email Anda</string>
     <string name="dummy_desc_discussion">saya mau curhat tentang teman saya yang baru saja pergi meninggalkan saya, saya jadi sangat sedih dan stress untuk menghadapi masalahini, bagaimana seharusnya saya bertindak</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="your_results">YOUR RESULTS</string>
+    <string name="anxiety">Anxiety:</string>
+    <string name="normal">NORMAL</string>
+    <string name="suggestions">SUGGESTIONS</string>
+    <string name="dummy_test_desc">Medium Depression Level is a type of Depression that occur because of …</string>
+    <string name="stress">Stress:</string>
+    <string name="severe">Severe</string>
+    <string name="depression">Depression:</string>
+    <string name="moderate">Moderate</string>
 </resources>

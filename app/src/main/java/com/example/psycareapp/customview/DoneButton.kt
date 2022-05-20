@@ -9,8 +9,7 @@ import androidx.appcompat.widget.AppCompatButton
 import androidx.core.content.ContextCompat
 import com.example.psycareapp.R
 
-class SignupButton: AppCompatButton {
-
+class DoneButton: AppCompatButton {
     private lateinit var enabledBackground: Drawable
     private lateinit var disabledBackground: Drawable
     private var txtColor: Int = 0
@@ -29,11 +28,12 @@ class SignupButton: AppCompatButton {
 
     override fun onDraw(canvas: Canvas?) {
         super.onDraw(canvas)
-        ContextCompat.getDrawable(context, android.R.color.darker_gray)  as Drawable
+        background = ContextCompat.getDrawable(context, android.R.color.white)  as Drawable
 
         setTextColor(txtColor)
         textSize = 12f
         gravity = Gravity.CENTER
+        text = if (isEnabled) "Submit" else "Isi Dulu"
     }
 
     private fun init() {
