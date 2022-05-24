@@ -20,4 +20,6 @@
     <string name="severe">Severe</string>
     <string name="depression">Depression:</string>
     <string name="moderate">Moderate</string>
+    <string name="title_activity_maps">MapsActivity</string>
+    <string name="map_menu">Map Menu</string>
 </resources>
