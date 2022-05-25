@@ -30,12 +30,10 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        Toast.makeText(this, getCurrentLocale(this)?.language.toString(), Toast.LENGTH_SHORT).show()
-
         val language = if(getCurrentLocale(this)?.language.toString() != "in"){
             "us"
         }else{
-            "in"
+            "id"
         }
 
         homeViewModel.getArticles(language).observe(this){
@@ -57,14 +55,6 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    fun getCurrentLocale(context: Context): Locale? {
-        return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            context.resources.configuration.locales.get(0)
-        } else {
-            context.resources.configuration.locale
-        }
-    }
-
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         val inflater = menuInflater
         inflater.inflate(R.menu.options_menu, menu)
@@ -79,6 +69,16 @@ class MainActivity : AppCompatActivity() {
                 true
             }
             else -> true
+        }
+    }
+
+    companion object{
+        fun getCurrentLocale(context: Context): Locale? {
+            return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                context.resources.configuration.locales.get(0)
+            } else {
+                context.resources.configuration.locale
+            }
         }
     }
 }

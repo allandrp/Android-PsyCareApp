@@ -19,7 +19,7 @@
     <string name="moderate">Sedang</string>
     <string name="title_activity_maps">MapsActivity</string>
     <string name="map_menu">Map Menu</string>
-    <string name="test_intro">if you think you feel bad you can take this test, to measure your mental health</string>
+    <string name="test_intro">Jika kamu merasa kurang baik kamu bisa mengambil tes ini, untuk mengukur kesehatan mentalmu</string>
     <string name="take_test">Ambil tes</string>
     <string name="service_text">Fitur</string>
     <string name="psychologist_text">Psikolog</string>
@@ -27,8 +27,12 @@
     <string name="discussion_text">Diskusi</string>
     <string name="discussion_desc">Utarakan isi hatimu dengan orang lain</string>
     <string name="related_article_text">Artikel Terkait</string>
-    <string name="greeting_user_text">Hi Budi, \nHow bagaimana harimu ?</string>
+    <string name="greeting_user_text">Hi Budi, \nbagaimana harimu ?</string>
     <string name="username">nama pengguna</string>
     <string name="submit_text">Kirim</string>
     <string name="say_something_reply">Katakan sesuatu...</string>
+    <string name="choice_0">Tidak Pernah</string>
+    <string name="choice_1">Terkadang</string>
+    <string name="choice_2">Sering</string>
+    <string name="choice_3">Selalu</string>
 </resources>
