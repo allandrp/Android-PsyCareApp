@@ -1,13 +1,13 @@
 <resources>
-    <string name="app_name">PsyCareApp</string>
-    <string name="input_username">Masukkan Username</string>
-    <string name="psycare">PsyCare</string>
-    <string name="input_password">Masukkan Password</string>
+    <string name="app_name" translatable="false">PsyCare</string>
+    <string name="input_username">Input Username</string>
+    <string name="psycare" translatable="false">PsyCare</string>
+    <string name="input_password">Input Password</string>
     <string name="login">LOGIN</string>
     <string name="dont_have_an_account">Don’t have an account yet?</string>
-    <string name="daftar">DAFTAR</string>
-    <string name="we_care">We care what you care the most</string>
-    <string name="input_email">Masukkan Email Anda</string>
+    <string name="daftar">Sign Up</string>
+    <string name="we_care" translatable="false">We care what you care the most</string>
+    <string name="input_email">Input your email</string>
     <string name="dummy_desc_discussion">saya mau curhat tentang teman saya yang baru saja pergi meninggalkan saya, saya jadi sangat sedih dan stress untuk menghadapi masalahini, bagaimana seharusnya saya bertindak</string>
     <string name="username">Username</string>
     <string name="password">Password</string>
@@ -22,4 +22,15 @@
     <string name="moderate">Moderate</string>
     <string name="title_activity_maps">MapsActivity</string>
     <string name="map_menu">Map Menu</string>
+    <string name="test_intro">if you think you feel bad you can take this test, to measure your mental health</string>
+    <string name="take_test">TAKE TEST</string>
+    <string name="service_text">Features</string>
+    <string name="psychologist_text">Psychologist</string>
+    <string name="pshycologist_desc">find and contact Pshycologist</string>
+    <string name="discussion_text">Discussion</string>
+    <string name="discussion_desc">share your thought with other people</string>
+    <string name="related_article_text">Related Article</string>
+    <string name="greeting_user_text">Hi Budi, \nHow was your day ?</string>
+    <string name="submit_text">Submit</string>
+    <string name="say_something_reply">Say something...</string>
 </resources>

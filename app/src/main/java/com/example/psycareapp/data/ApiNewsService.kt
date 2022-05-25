@@ -5,9 +5,9 @@ import retrofit2.http.Query
 
 interface ApiNewsService {
 
-    @GET("everything")
+    @GET("top-headlines?category=health")
     suspend fun getMentalHealtNews(
-        @Query("q") q: String,
+        @Query("country") country: String,
         @Query("apiKey") apiKey: String,
         @Query("pageSize") pageSize: Int,
         @Query("sortBy") sortBy: String
