@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "236443968134",
+    "project_id": "psycareapp",
+    "storage_bucket": "psycareapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:236443968134:android:276cb8af2ff7d8ef19e707",
+        "android_client_info": {
+          "package_name": "com.example.psycareapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "236443968134-eod75lss1i9f7jlsmn5ingq5nrcr4mk4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCeJotJfh5KxBdAJZAQjcjocqVa3RkN8f0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "236443968134-eod75lss1i9f7jlsmn5ingq5nrcr4mk4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
