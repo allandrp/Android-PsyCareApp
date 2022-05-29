@@ -6,7 +6,5 @@ import com.example.psycareapp.utils.Utils
 
 class TestViewModel: ViewModel() {
 
-    private val testItems = Utils.getTestItems()
-
-    fun getTestItems(): ArrayList<TestItem> = testItems
+    fun getTestItems(language: String): ArrayList<TestItem> = Utils.getTestItems(language)
 }

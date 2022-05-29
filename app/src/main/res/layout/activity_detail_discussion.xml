@@ -32,7 +32,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:fontFamily="@font/poppins_bold"
-            android:text="TextView"
+            tools:text="User"
             android:textColor="@color/blue_dark_text_main"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="@+id/avatar_detail_discussion"
@@ -86,7 +86,7 @@
             android:layout_margin="10dp"
             android:layout_weight="1"
             android:background="@drawable/edit_text_shadow"
-            android:hint="Say something..."
+            android:hint="@string/say_something_reply"
             android:inputType="text"
             android:minHeight="48dp"
             android:padding="10dp" />

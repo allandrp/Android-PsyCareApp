@@ -1,17 +1,22 @@
 package com.example.psycareapp
 
+import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
+import android.os.Build
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.psycareapp.adapter.NewsAdapter
 import com.example.psycareapp.databinding.ActivityMainBinding
 import com.example.psycareapp.repository.Result
 import com.example.psycareapp.viewmodel.HomeViewModel
 import com.example.psycareapp.viewmodel.ViewModelFactory
+import java.util.*
+
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -25,7 +30,13 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        homeViewModel.getArticles().observe(this){
+        val language = if(getCurrentLocale(this)?.language.toString() != "in"){
+            "us"
+        }else{
+            "id"
+        }
+
+        homeViewModel.getArticles(language).observe(this){
             when(it){
                 is Result.Success -> {
                     binding.recyclerViewNews.adapter = adapterNews
@@ -58,6 +69,16 @@ class MainActivity : AppCompatActivity() {
                 true
             }
             else -> true
+        }
+    }
+
+    companion object{
+        fun getCurrentLocale(context: Context): Locale? {
+            return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                context.resources.configuration.locales.get(0)
+            } else {
+                context.resources.configuration.locale
+            }
         }
     }
 }

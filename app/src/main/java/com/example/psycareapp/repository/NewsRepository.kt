@@ -8,11 +8,11 @@ import com.example.psycareapp.data.NewsResponse
 
 class NewsRepository(private val apiService: ApiNewsService){
 
-    fun getMentalHealtNews(): LiveData<Result<NewsResponse>> = liveData{
+    fun getMentalHealtNews(country: String): LiveData<Result<NewsResponse>> = liveData{
         emit(Result.Loading)
 
         try {
-            val response = apiService.getMentalHealtNews("depression, anxiety, stress", BuildConfig.TOKEN_API_NEWS, 4, "relevancy")
+            val response = apiService.getMentalHealtNews(country, BuildConfig.TOKEN_API_NEWS, 4, "relevancy")
 
             when {
                 response.status == "error" -> {

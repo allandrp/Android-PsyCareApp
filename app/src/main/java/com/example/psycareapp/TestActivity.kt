@@ -25,14 +25,13 @@ class TestActivity : AppCompatActivity() {
         binding = ActivityTestBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        adapter = TestAdapter(testViewModel.getTestItems())
+        adapter = TestAdapter(testViewModel.getTestItems(MainActivity.getCurrentLocale(this)!!.language))
         binding.recyclerViewTest.layoutManager = LinearLayoutManager(this)
         binding.recyclerViewTest.adapter = adapter
 
         binding.buttonSubmitTest.setOnClickListener {
             var index = 0
-            testViewModel.getTestItems().forEach{ _ ->
-                Log.d("SCORE_TEST $index", testViewModel.getTestItems()[index].score.toString())
+            testViewModel.getTestItems(MainActivity.getCurrentLocale(this)!!.language).forEach{ _ ->
                 index++
             }
             getAnswer()
@@ -43,7 +42,7 @@ class TestActivity : AppCompatActivity() {
         val numberNotAnswered = adapter.isAnswerFull()
         Log.d("NOT_ANSWERED", numberNotAnswered.toString())
         if(numberNotAnswered == 86){
-            Toast.makeText(this, testViewModel.getTestItems().map { it.score}.toString(), Toast.LENGTH_LONG).show()
+            Toast.makeText(this, testViewModel.getTestItems(MainActivity.getCurrentLocale(this)!!.language).map { it.score}.toString(), Toast.LENGTH_LONG).show()
         }else{
             val y = binding.recyclerViewTest.y + binding.recyclerViewTest.getChildAt(numberNotAnswered).y - 300
             binding.scrollviewTest.scrollTo(0, y.toInt())

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="input_username">Masukkan Username</string>
+    <string name="input_password">Masukkan Password</string>
+    <string name="login">MASUK</string>
+    <string name="dont_have_an_account">Belum punya akun?</string>
+    <string name="daftar">Daftar</string>
+    <string name="input_email">Masukkan Email Anda</string>
+    <string name="dummy_desc_discussion">saya mau curhat tentang teman saya yang baru saja pergi meninggalkan saya, saya jadi sangat sedih dan stress untuk menghadapi masalahini, bagaimana seharusnya saya bertindak</string>
+    <string name="password">Kata Sandi</string>
+    <string name="your_results">HASILMU</string>
+    <string name="anxiety">Kecemasan:</string>
+    <string name="normal">NORMAL</string>
+    <string name="suggestions">SARAN</string>
+    <string name="dummy_test_desc">Medium Depression Level is a type of Depression that occur because of …</string>
+    <string name="stress">Stress:</string>
+    <string name="severe">Parah</string>
+    <string name="depression">Depression:</string>
+    <string name="moderate">Sedang</string>
+    <string name="title_activity_maps">MapsActivity</string>
+    <string name="map_menu">Map Menu</string>
+    <string name="test_intro">Jika kamu merasa kurang baik kamu bisa mengambil tes ini, untuk mengukur kesehatan mentalmu</string>
+    <string name="take_test">Ambil tes</string>
+    <string name="service_text">Fitur</string>
+    <string name="psychologist_text">Psikolog</string>
+    <string name="pshycologist_desc">Temukan psikolog disekitarmu</string>
+    <string name="discussion_text">Diskusi</string>
+    <string name="discussion_desc">Utarakan isi hatimu dengan orang lain</string>
+    <string name="related_article_text">Artikel Terkait</string>
+    <string name="greeting_user_text">Hi Budi, \nbagaimana harimu ?</string>
+    <string name="username">nama pengguna</string>
+    <string name="submit_text">Kirim</string>
+    <string name="say_something_reply">Katakan sesuatu...</string>
+    <string name="choice_0">Tidak Pernah</string>
+    <string name="choice_1">Terkadang</string>
+    <string name="choice_2">Sering</string>
+    <string name="choice_3">Selalu</string>
+</resources>

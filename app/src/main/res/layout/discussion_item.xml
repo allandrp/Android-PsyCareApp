@@ -28,7 +28,7 @@
             android:id="@+id/username_discussion"
             style="@style/textDiscussionItemTitle"
             android:layout_marginStart="8dp"
-            android:text="Anonymous"
+            tools:text="Anonymous"
             app:layout_constraintBottom_toBottomOf="@+id/user_avatar_discussion"
             app:layout_constraintStart_toEndOf="@+id/user_avatar_discussion"
             app:layout_constraintTop_toTopOf="@+id/user_avatar_discussion" />
