@@ -39,4 +39,5 @@
     <string name="choice_2">Often</string>
     <string name="choice_3">Every time</string>
     <string name="discussion_empty">No Discussion Yet</string>
+    <string name="discussion_hint">What do you want to share ?</string>
 </resources>

@@ -36,15 +36,13 @@ class TestAdapter(private val testItem: ArrayList<TestItem>): RecyclerView.Adapt
 
             groupChoice.setOnCheckedChangeListener { _, id ->
                 numberNotAnswered.remove(position)
-                var choice = 0
-                when(id){
-                    choice0.id -> choice = 0
-                    choice1.id -> choice = 1
-                    choice2.id -> choice = 2
-                    choice3.id -> choice = 3
+                testItem[position].score = when(id){
+                    choice0.id -> 0
+                    choice1.id -> 1
+                    choice2.id -> 2
+                    choice3.id -> 3
+                    else -> null
                 }
-
-                testItem[position].score = choice
             }
         }
     }

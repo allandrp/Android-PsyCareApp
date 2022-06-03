@@ -29,7 +29,7 @@ class SignupActivity : AppCompatActivity() {
     private lateinit var signupButton: SignupButton
 
     private lateinit var fbAuth: FirebaseAuth
-    val dbFirestore = Firebase.firestore
+    private val dbFirestore = Firebase.firestore
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -74,7 +74,7 @@ class SignupActivity : AppCompatActivity() {
 
         dbFirestore.collection("users")
             .add(user)
-            .addOnSuccessListener { documentReference ->
+            .addOnSuccessListener {
                 Toast.makeText(this, "Signup succesful", Toast.LENGTH_SHORT).show()
                 Firebase.auth.signOut()
                 finish()
