@@ -37,6 +37,6 @@ class SignupButton: AppCompatButton {
     }
 
     private fun init() {
-        txtColor = ContextCompat.getColor(context, android.R.color.background_light)
+        txtColor = ContextCompat.getColor(context, android.R.color.black)
     }
 }

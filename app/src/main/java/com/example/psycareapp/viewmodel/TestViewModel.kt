@@ -6,5 +6,10 @@ import com.example.psycareapp.utils.Utils
 
 class TestViewModel: ViewModel() {
 
-    fun getTestItems(language: String): ArrayList<TestItem> = Utils.getTestItems(language)
+    var testItem: ArrayList<TestItem> = ArrayList()
+
+    fun getTestItems(language: String){
+        testItem = Utils.getTestItems(language)
+    }
+
 }

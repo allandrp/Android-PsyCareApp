@@ -6,20 +6,26 @@
         <entry key="..\:/Users/ALLAND/AndroidStudioProjects/PsyCareApp/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Users/ALLAND/AndroidStudioProjects/PsyCareApp/app/src/main/res/layout/news_item.xml" value="0.1" />
         <entry key="..\:/Users/ALLAND/Documents/Kuliah/BANGKIT 2022/Capstone/Android/PsyCareApp/app/src/main/res/layout/activity_main.xml" value="0.35" />
+        <entry key="..\:/Users/ALLAND/Documents/PsyCareApp/app/src/main/res/drawable/bg_edittext_noborder.xml" value="0.1825" />
+        <entry key="..\:/Users/ALLAND/Documents/PsyCareApp/app/src/main/res/drawable/discussion_empty.xml" value="0.183" />
         <entry key="..\:/Users/ALLAND/Documents/PsyCareApp/app/src/main/res/drawable/edit_text_shadow.xml" value="0.3515" />
+        <entry key="..\:/Users/ALLAND/Documents/PsyCareApp/app/src/main/res/drawable/ic_baseline_logout_24.xml" value="0.3515" />
+        <entry key="..\:/Users/ALLAND/Documents/PsyCareApp/app/src/main/res/drawable/login_button_enabled.xml" value="0.3515" />
         <entry key="..\:/Users/ALLAND/Documents/PsyCareApp/app/src/main/res/drawable/outline_send_24.xml" value="0.3515" />
+        <entry key="..\:/Users/ALLAND/Documents/PsyCareApp/app/src/main/res/layout/activity_add_discussion.xml" value="0.3442028985507246" />
         <entry key="..\:/Users/ALLAND/Documents/PsyCareApp/app/src/main/res/layout/activity_detail_discussion.xml" value="0.33" />
         <entry key="..\:/Users/ALLAND/Documents/PsyCareApp/app/src/main/res/layout/activity_discussion.xml" value="0.33" />
-        <entry key="..\:/Users/ALLAND/Documents/PsyCareApp/app/src/main/res/layout/activity_login.xml" value="0.32563405797101447" />
+        <entry key="..\:/Users/ALLAND/Documents/PsyCareApp/app/src/main/res/layout/activity_login.xml" value="0.33" />
         <entry key="..\:/Users/ALLAND/Documents/PsyCareApp/app/src/main/res/layout/activity_main.xml" value="0.2739165985282093" />
         <entry key="..\:/Users/ALLAND/Documents/PsyCareApp/app/src/main/res/layout/activity_maps.xml" value="0.18" />
         <entry key="..\:/Users/ALLAND/Documents/PsyCareApp/app/src/main/res/layout/activity_signup.xml" value="0.32563405797101447" />
         <entry key="..\:/Users/ALLAND/Documents/PsyCareApp/app/src/main/res/layout/activity_splash_screen.xml" value="0.32563405797101447" />
         <entry key="..\:/Users/ALLAND/Documents/PsyCareApp/app/src/main/res/layout/activity_test.xml" value="0.304485727231536" />
         <entry key="..\:/Users/ALLAND/Documents/PsyCareApp/app/src/main/res/layout/activity_test_result.xml" value="0.32563405797101447" />
-        <entry key="..\:/Users/ALLAND/Documents/PsyCareApp/app/src/main/res/layout/discussion_item.xml" value="0.33" />
-        <entry key="..\:/Users/ALLAND/Documents/PsyCareApp/app/src/main/res/layout/news_item.xml" value="0.11574074074074074" />
+        <entry key="..\:/Users/ALLAND/Documents/PsyCareApp/app/src/main/res/layout/discussion_item.xml" value="0.5048231511254019" />
+        <entry key="..\:/Users/ALLAND/Documents/PsyCareApp/app/src/main/res/layout/news_item.xml" value="0.33" />
         <entry key="..\:/Users/ALLAND/Documents/PsyCareApp/app/src/main/res/layout/question_item.xml" value="0.2878787878787879" />
+        <entry key="..\:/Users/ALLAND/Documents/PsyCareApp/app/src/main/res/menu/options_menu.xml" value="0.35" />
         <entry key="..\:/Users/user/AndroidStudioProjects/Android-PsyCareApp/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.123" />
         <entry key="..\:/Users/user/AndroidStudioProjects/Android-PsyCareApp/app/src/main/res/drawable/ic_close_24.xml" value="0.1" />
         <entry key="..\:/Users/user/AndroidStudioProjects/Android-PsyCareApp/app/src/main/res/drawable/login_button_disabled.xml" value="0.1" />

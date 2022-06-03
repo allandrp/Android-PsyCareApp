@@ -10,6 +10,7 @@
     <string name="input_email">Input your email</string>
     <string name="dummy_desc_discussion">saya mau curhat tentang teman saya yang baru saja pergi meninggalkan saya, saya jadi sangat sedih dan stress untuk menghadapi masalahini, bagaimana seharusnya saya bertindak</string>
     <string name="username">Username</string>
+    <string name="email" translatable="false">email</string>
     <string name="password">Password</string>
     <string name="your_results">YOUR RESULTS</string>
     <string name="anxiety">Anxiety:</string>
@@ -30,11 +31,13 @@
     <string name="discussion_text">Discussion</string>
     <string name="discussion_desc">share your thought with other people</string>
     <string name="related_article_text">Related Article</string>
-    <string name="greeting_user_text">Hi Budi, \nHow was your day ?</string>
+    <string name="greeting_user_text">Hi %1$s, \nHow was your day ?</string>
     <string name="submit_text">Submit</string>
-    <string name="say_something_reply">Say something...</string>
+    <string name="say_something_reply">Say something…</string>
     <string name="choice_0">Never</string>
     <string name="choice_1">Sometimes</string>
     <string name="choice_2">Often</string>
-    <string name="choice_3">Everytime</string>
+    <string name="choice_3">Every time</string>
+    <string name="discussion_empty">No Discussion Yet</string>
+    <string name="discussion_hint">What do you want to share ?</string>
 </resources>

@@ -27,12 +27,14 @@
     <string name="discussion_text">Diskusi</string>
     <string name="discussion_desc">Utarakan isi hatimu dengan orang lain</string>
     <string name="related_article_text">Artikel Terkait</string>
-    <string name="greeting_user_text">Hi Budi, \nbagaimana harimu ?</string>
+    <string name="greeting_user_text">Hi  %1$s, \nbagaimana harimu ?</string>
     <string name="username">nama pengguna</string>
     <string name="submit_text">Kirim</string>
-    <string name="say_something_reply">Katakan sesuatu...</string>
+    <string name="say_something_reply">Katakan sesuatu…</string>
     <string name="choice_0">Tidak Pernah</string>
     <string name="choice_1">Terkadang</string>
     <string name="choice_2">Sering</string>
     <string name="choice_3">Selalu</string>
+    <string name="discussion_empty">Belum Ada Diskusi</string>
+    <string name="discussion_hint">Apa yang ingin anda bagikan ?</string>
 </resources>
