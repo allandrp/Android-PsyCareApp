@@ -1,11 +1,13 @@
 package com.example.psycareapp
 
 import android.content.Intent
+import android.graphics.drawable.Drawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import com.example.psycareapp.customview.LoginButton
 import com.example.psycareapp.customview.PasswordEditText
 import com.example.psycareapp.customview.SignupButton
@@ -20,7 +22,7 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var loginButton: LoginButton
     private lateinit var usernameEditText: UsernameEditText
     private lateinit var passwordEditText: PasswordEditText
-    private lateinit var signupButton: SignupButton
+//    private lateinit var signupButton: SignupButton
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,7 +35,7 @@ class LoginActivity : AppCompatActivity() {
         loginButton = binding!!.login
         usernameEditText = binding!!.username
         passwordEditText = binding!!.password
-        signupButton = binding!!.signup
+        val signupButton2 = binding!!.signup
 
         setLoginButtonEnable()
         init()
@@ -42,7 +44,7 @@ class LoginActivity : AppCompatActivity() {
             Toast.makeText(this, "Hello Wahid 😁", Toast.LENGTH_SHORT).show()
         }
 
-        signupButton.setOnClickListener {
+        signupButton2.setOnClickListener {
             val intent = Intent(this, SignupActivity::class.java)
             startActivity(intent)
         }
@@ -76,5 +78,7 @@ class LoginActivity : AppCompatActivity() {
             override fun afterTextChanged(s: Editable) {
             }
         })
+
+//        signupButton.background = ContextCompat.getDrawable(this, R.drawable.signup_button) as Drawable
     }
 }

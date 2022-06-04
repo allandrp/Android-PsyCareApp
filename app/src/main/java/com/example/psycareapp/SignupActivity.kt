@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Patterns
 import android.widget.Toast
 import com.example.psycareapp.customview.EmailEditText
 import com.example.psycareapp.customview.PasswordEditText
@@ -11,6 +12,7 @@ import com.example.psycareapp.customview.SignupButton
 import com.example.psycareapp.customview.UsernameEditText
 import com.example.psycareapp.databinding.ActivityLoginBinding
 import com.example.psycareapp.databinding.ActivitySignupBinding
+import java.util.regex.Pattern
 
 class SignupActivity : AppCompatActivity() {
 
@@ -46,8 +48,14 @@ class SignupActivity : AppCompatActivity() {
         val email = binding?.email?.text
         val username = binding?.username?.text
         val password = binding?.password?.text
+
+//        var emailChecker = if (Patterns.EMAIL_ADDRESS.matcher(email.toString().trim()).matches()){
+//        }
+
         signupButton.isEnabled =
-                email != null && email.toString().isNotEmpty()
+//                (!email.let { Patterns.EMAIL_ADDRESS.matcher(it.toString()).matches() })
+//                email != null && email.toString().isNotEmpty()
+                email != null && Patterns.EMAIL_ADDRESS.matcher(email.toString().trim()).matches()
                 && username != null && username.toString().isNotEmpty()
                 && password != null && password.toString().length >= 6
     }
