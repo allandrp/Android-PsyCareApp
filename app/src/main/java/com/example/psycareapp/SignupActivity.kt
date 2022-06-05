@@ -1,20 +1,17 @@
 package com.example.psycareapp
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Patterns
-import android.util.Log
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.example.psycareapp.customview.EmailEditText
 import com.example.psycareapp.customview.PasswordEditText
 import com.example.psycareapp.customview.SignupButton
 import com.example.psycareapp.customview.UsernameEditText
 import com.example.psycareapp.data.User
-import com.example.psycareapp.databinding.ActivityLoginBinding
 import com.example.psycareapp.databinding.ActivitySignupBinding
-import java.util.regex.Pattern
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
@@ -27,7 +24,6 @@ class SignupActivity : AppCompatActivity() {
     private val binding get() = _activitySignupBinding
 
     private lateinit var emailEditText: EmailEditText
-    private lateinit var usernameEditText: UsernameEditText
     private lateinit var passwordEditText: PasswordEditText
     private lateinit var signupButton: SignupButton
 
@@ -44,7 +40,6 @@ class SignupActivity : AppCompatActivity() {
         supportActionBar?.hide()
 
         emailEditText = binding!!.email
-        usernameEditText = binding!!.username
         passwordEditText = binding!!.password
         signupButton = binding!!.signup
 
@@ -71,13 +66,13 @@ class SignupActivity : AppCompatActivity() {
     }
 
     private fun saveDataSignup(user: FirebaseUser?) {
-        val user = User(
+        val userData = User(
             user?.uid.toString(),
             emailEditText.text?.split("@")?.get(0) ?: ""
         )
 
         dbFirestore.collection("users")
-            .add(user)
+            .add(userData)
             .addOnSuccessListener {
                 Toast.makeText(this, "Signup succesful", Toast.LENGTH_SHORT).show()
                 Firebase.auth.signOut()
@@ -92,15 +87,10 @@ class SignupActivity : AppCompatActivity() {
 
     private fun setSignupButtonEnable() {
         val email = binding?.email?.text
-        val username = binding?.username?.text
         val password = binding?.password?.text
-
-//        var emailChecker = if (Patterns.EMAIL_ADDRESS.matcher(email.toString().trim()).matches()){
-//        }
 
         signupButton.isEnabled =
                 email != null && Patterns.EMAIL_ADDRESS.matcher(email.toString().trim()).matches()
-                && username != null && username.toString().isNotEmpty()
                 && password != null && password.toString().length >= 6
     }
 
