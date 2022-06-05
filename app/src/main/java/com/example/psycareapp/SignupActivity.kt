@@ -1,17 +1,16 @@
 package com.example.psycareapp
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
+import android.util.Patterns
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.example.psycareapp.customview.EmailEditText
 import com.example.psycareapp.customview.PasswordEditText
 import com.example.psycareapp.customview.SignupButton
 import com.example.psycareapp.customview.UsernameEditText
 import com.example.psycareapp.data.User
-import com.example.psycareapp.databinding.ActivityLoginBinding
 import com.example.psycareapp.databinding.ActivitySignupBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -67,13 +66,13 @@ class SignupActivity : AppCompatActivity() {
     }
 
     private fun saveDataSignup(user: FirebaseUser?) {
-        val user = User(
+        val userData = User(
             user?.uid.toString(),
             emailEditText.text?.split("@")?.get(0) ?: ""
         )
 
         dbFirestore.collection("users")
-            .add(user)
+            .add(userData)
             .addOnSuccessListener {
                 Toast.makeText(this, "Signup succesful", Toast.LENGTH_SHORT).show()
                 Firebase.auth.signOut()
@@ -89,9 +88,10 @@ class SignupActivity : AppCompatActivity() {
     private fun setSignupButtonEnable() {
         val email = binding?.email?.text
         val password = binding?.password?.text
+
         signupButton.isEnabled =
-            email != null && email.toString().isNotEmpty()
-                    && password != null && password.toString().length >= 6
+                email != null && Patterns.EMAIL_ADDRESS.matcher(email.toString().trim()).matches()
+                && password != null && password.toString().length >= 6
     }
 
     private fun init() {
@@ -99,11 +99,9 @@ class SignupActivity : AppCompatActivity() {
         emailEditText.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
             }
-
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
                 setSignupButtonEnable()
             }
-
             override fun afterTextChanged(s: Editable) {
             }
         })
@@ -111,11 +109,9 @@ class SignupActivity : AppCompatActivity() {
         passwordEditText.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
             }
-
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
                 setSignupButtonEnable()
             }
-
             override fun afterTextChanged(s: Editable) {
             }
         })

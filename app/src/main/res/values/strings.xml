@@ -33,11 +33,14 @@
     <string name="related_article_text">Related Article</string>
     <string name="greeting_user_text">Hi %1$s, \nHow was your day ?</string>
     <string name="submit_text">Submit</string>
-    <string name="say_something_reply">Say something…</string>
+    <string name="say_something_reply">Say something...</string>
     <string name="choice_0">Never</string>
     <string name="choice_1">Sometimes</string>
     <string name="choice_2">Often</string>
     <string name="choice_3">Every time</string>
     <string name="discussion_empty">No Discussion Yet</string>
     <string name="discussion_hint">What do you want to share ?</string>
+    <string name="status">Status: </string>
+    <string name="back_to_home">BACK TO HOME</string>
+    <string name="what_you_can_do">What You Can Do ?</string>
 </resources>
