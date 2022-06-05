@@ -30,7 +30,6 @@ class SignupButton: AppCompatButton {
     override fun onDraw(canvas: Canvas?) {
         super.onDraw(canvas)
         ContextCompat.getDrawable(context, android.R.color.darker_gray)  as Drawable
-        background = if (isEnabled) enabledBackground else disabledBackground
 
         setTextColor(txtColor)
         textSize = 12f
@@ -38,8 +37,6 @@ class SignupButton: AppCompatButton {
     }
 
     private fun init() {
-        txtColor = ContextCompat.getColor(context, android.R.color.background_light)
-        enabledBackground = ContextCompat.getDrawable(context, R.drawable.signup_button_enabled) as Drawable
-        disabledBackground = ContextCompat.getDrawable(context, R.drawable.signup_button) as Drawable
+        txtColor = ContextCompat.getColor(context, android.R.color.black)
     }
 }
