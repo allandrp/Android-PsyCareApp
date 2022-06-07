@@ -1,11 +1,15 @@
 package com.example.psycareapp
 
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
+import android.view.inputmethod.InputMethodManager
+import android.widget.Button
+import android.widget.TextView
 import android.widget.Toast
 import com.example.psycareapp.customview.*
 import com.example.psycareapp.databinding.ActivityLoginBinding
@@ -18,11 +22,10 @@ class LoginActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityLoginBinding
 
-    private lateinit var loginButton: LoginButton
+    private lateinit var loginButton: Button
     private lateinit var usernameEditText: EmailEditText
     private lateinit var passwordEditText: PasswordEditText
-    private lateinit var signupButton: SignupButton
-
+    private lateinit var signupButton: TextView
     private lateinit var fbAuth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,17 +35,20 @@ class LoginActivity : AppCompatActivity() {
 
         fbAuth = FirebaseAuth.getInstance()
 
+        val imm: InputMethodManager =
+            getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         supportActionBar?.hide()
 
         loginButton = binding.login
         usernameEditText = binding.username
         passwordEditText = binding.password
-        signupButton = binding.signup
+        signupButton = binding.registerLink
 
         setLoginButtonEnable()
         init()
 
         loginButton.setOnClickListener {
+            imm.hideSoftInputFromWindow(binding.root.windowToken, 0)
             login()
         }
 

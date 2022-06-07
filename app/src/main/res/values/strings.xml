@@ -5,7 +5,7 @@
     <string name="input_password">Input Password</string>
     <string name="login">LOGIN</string>
     <string name="dont_have_an_account">Don’t have an account yet?</string>
-    <string name="daftar">Sign Up</string>
+    <string name="daftar">Register</string>
     <string name="we_care" translatable="false">We care what you care the most</string>
     <string name="input_email">Input your email</string>
     <string name="dummy_desc_discussion">saya mau curhat tentang teman saya yang baru saja pergi meninggalkan saya, saya jadi sangat sedih dan stress untuk menghadapi masalahini, bagaimana seharusnya saya bertindak</string>
@@ -43,4 +43,6 @@
     <string name="status">Status: </string>
     <string name="back_to_home">BACK TO HOME</string>
     <string name="what_you_can_do">What You Can Do ?</string>
+    <string name="writer">Writer</string>
+    <string name="send_text">Send</string>
 </resources>

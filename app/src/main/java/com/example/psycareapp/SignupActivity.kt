@@ -1,9 +1,12 @@
 package com.example.psycareapp
 
+import android.content.Context
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Patterns
+import android.view.inputmethod.InputMethodManager
+import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.psycareapp.customview.EmailEditText
@@ -20,23 +23,24 @@ import com.google.firebase.ktx.Firebase
 
 class SignupActivity : AppCompatActivity() {
 
-    private var _activitySignupBinding: ActivitySignupBinding? = null
-    private val binding get() = _activitySignupBinding
+    private lateinit var binding: ActivitySignupBinding
 
     private lateinit var emailEditText: EmailEditText
     private lateinit var passwordEditText: PasswordEditText
-    private lateinit var signupButton: SignupButton
+    private lateinit var signupButton: Button
 
     private lateinit var fbAuth: FirebaseAuth
     private val dbFirestore = Firebase.firestore
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        _activitySignupBinding = ActivitySignupBinding.inflate(layoutInflater)
+        binding = ActivitySignupBinding.inflate(layoutInflater)
         setContentView(binding?.root)
 
         fbAuth = FirebaseAuth.getInstance()
 
+        val imm: InputMethodManager =
+            getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         supportActionBar?.hide()
 
         emailEditText = binding!!.email
@@ -47,6 +51,7 @@ class SignupActivity : AppCompatActivity() {
         init()
 
         signupButton.setOnClickListener {
+            imm.hideSoftInputFromWindow(binding.root.windowToken, 0)
             signUp()
         }
     }
@@ -71,18 +76,21 @@ class SignupActivity : AppCompatActivity() {
             emailEditText.text?.split("@")?.get(0) ?: ""
         )
 
-        dbFirestore.collection("users")
-            .add(userData)
-            .addOnSuccessListener {
-                Toast.makeText(this, "Signup succesful", Toast.LENGTH_SHORT).show()
-                Firebase.auth.signOut()
-                finish()
-            }
-            .addOnFailureListener { error ->
-                Toast.makeText(this, error.message, Toast.LENGTH_SHORT).show()
-                Firebase.auth.signOut()
-                finish()
-            }
+        fbAuth.currentUser?.let {
+            dbFirestore.collection("users").document(it.uid)
+                .set(userData)
+                .addOnSuccessListener {
+                    Toast.makeText(this, "Signup succesful", Toast.LENGTH_SHORT).show()
+                    fbAuth.signOut()
+                    finish()
+                }
+
+                .addOnFailureListener { error ->
+                    Toast.makeText(this, error.message, Toast.LENGTH_SHORT).show()
+                    fbAuth.signOut()
+                    finish()
+                }
+        }
     }
 
     private fun setSignupButtonEnable() {

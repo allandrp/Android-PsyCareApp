@@ -8,13 +8,17 @@
     android:layout_marginEnd="8dp"
     android:layout_marginStart="8dp"
     tools:context=".DiscussionActivity"
-    app:cardCornerRadius="10dp">
+    app:cardCornerRadius="10dp"
+    android:foreground="?attr/selectableItemBackground"
+    android:clickable="true"
+    android:focusable="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:minHeight="150dp"
-        android:padding="12dp">
+        android:padding="12dp"
+        >
 
         <ImageView
             android:id="@+id/user_avatar_discussion"
@@ -34,17 +38,15 @@
             app:layout_constraintStart_toEndOf="@+id/user_avatar_discussion"
             app:layout_constraintTop_toTopOf="@+id/user_avatar_discussion" />
 
-        <TextView
+        <com.github.curioustechizen.ago.RelativeTimeTextView
             android:id="@+id/timestamp_discussion"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
             android:fontFamily="@font/poppins_light"
             android:textSize="12sp"
-            tools:text="alland"
-            app:layout_constraintBottom_toBottomOf="@+id/username_discussion"
-            app:layout_constraintStart_toEndOf="@+id/username_discussion"
-            app:layout_constraintTop_toTopOf="@+id/username_discussion" />
+            app:layout_constraintStart_toStartOf="@+id/username_discussion"
+            app:layout_constraintTop_toBottomOf="@+id/username_discussion"
+            tools:text="2 minutes ago" />
 
         <TextView
             android:id="@+id/desc_discussion"
@@ -53,7 +55,7 @@
             android:text="@string/dummy_desc_discussion"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/user_avatar_discussion"
-            app:layout_constraintTop_toBottomOf="@+id/user_avatar_discussion" />
+            app:layout_constraintTop_toBottomOf="@+id/timestamp_discussion" />
 
         <ImageView
             android:id="@+id/imageView4"

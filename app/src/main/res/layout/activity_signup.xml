@@ -14,8 +14,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="16dp"
+        android:fontFamily="@font/poppins"
         android:gravity="center"
         android:text="@string/psycare"
         android:textColor="@color/white"
@@ -30,6 +31,7 @@
         android:id="@+id/we_care"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins"
         android:gravity="center"
         android:text="@string/we_care"
         android:textColor="@color/white"
@@ -42,7 +44,7 @@
         android:id="@+id/textView2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="24dp"
         android:fontFamily="@font/poppins"
         android:text="@string/email"
         android:textColor="@color/white"
@@ -92,8 +94,9 @@
         app:layout_constraintStart_toStartOf="@+id/email"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
-    <com.example.psycareapp.customview.SignupButton
+    <Button
         android:id="@+id/signup"
+        android:backgroundTint="@color/button_green"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"

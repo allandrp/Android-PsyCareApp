@@ -40,4 +40,6 @@
     <string name="what_you_can_do">Apa Yang Bisa Saya Lakukan ?</string>
     <string name="discussion_empty">Belum Ada Diskusi</string>
     <string name="discussion_hint">Apa yang ingin anda bagikan ?</string>
+    <string name="writer">Penulis</string>
+    <string name="send_text">Kirim</string>
 </resources>

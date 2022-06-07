@@ -1,9 +1,26 @@
 package com.example.psycareapp.data
 
-data class Discussion(
-    var idCreator: String,
-    var description: String,
+import android.os.Parcelable
+import com.google.gson.annotations.SerializedName
+import com.google.gson.internal.LinkedTreeMap
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
+class Discussion(
+    val idDiscussion: String?,
+    var idCreator: String?,
+    var writer: String?,
+    var description: String?,
     var reply: ArrayList<Discussion>?,
-    val timestamp: Long? = null,
-    var saved: Boolean
-)
+    val timestamp: Long? = null
+):Parcelable
+{
+    constructor() : this(
+        "",
+        "",
+        "",
+        "",
+        arrayListOf(),
+        0
+    )
+}

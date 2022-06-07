@@ -14,11 +14,6 @@
         <!-- Customize your theme here. -->
     </style>
 
-    <style name="NoActionBar" parent="Theme.PsyCareApp">
-        <item name="android:windowActionBar">false</item>
-        <item name="android:windowNoTitle">true</item>
-    </style>
-
     <style name="cardService">
         <item name="android:foreground">?attr/selectableItemBackground</item>
         <item name="android:clickable">true</item>

@@ -15,8 +15,7 @@
         android:theme="@style/Theme.PsyCareApp">
         <activity
             android:name=".AddDiscussionActivity"
-            android:exported="false"
-            android:theme="@style/NoActionBar"/>
+            android:exported="false" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
