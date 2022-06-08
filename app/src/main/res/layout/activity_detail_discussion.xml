@@ -97,7 +97,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/desc_detail_discussion"
-                tools:listitem="@layout/discussion_item" />
+                tools:listitem="@layout/reply_item" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

@@ -73,6 +73,9 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        binding.buttonPshycologist.setOnClickListener {
+            startActivity(Intent(this, PsychologistActivity::class.java))
+        }
         binding.buttonDiscussion.setOnClickListener {
             val intent = Intent(this@MainActivity, DiscussionActivity::class.java)
             startActivity(intent)

@@ -13,12 +13,22 @@ class ApiConfig {
 
         fun getApiNewsService(): ApiNewsService{
             val retrofit = Retrofit.Builder().apply {
-                baseUrl(" https://newsapi.org/v2/")
+                baseUrl("https://newsapi.org/v2/")
                 addConverterFactory(GsonConverterFactory.create())
                 client(client)
             }.build()
 
             return retrofit.create(ApiNewsService::class.java)
+        }
+
+        fun getApiPsyCare(): ApiPsyCareService{
+            val retrofit = Retrofit.Builder().apply {
+                baseUrl("https://us-central1-psycare-app-bangkit.cloudfunctions.net/app/api/")
+                addConverterFactory(GsonConverterFactory.create())
+                client(client)
+            }.build()
+
+            return retrofit.create(ApiPsyCareService::class.java)
         }
     }
 }

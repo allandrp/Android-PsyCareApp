@@ -63,7 +63,7 @@ class SignupActivity : AppCompatActivity() {
         )
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
-                    saveDataSignup(Firebase.auth.currentUser)
+//                    saveDataSignup(Firebase.auth.currentUser)
                 } else {
                     Toast.makeText(this, task.exception?.message, Toast.LENGTH_SHORT).show()
                 }
