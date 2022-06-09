@@ -1,27 +1,16 @@
 package com.example.psycareapp.adapter
 
-import android.annotation.SuppressLint
 import android.content.Intent
-import android.text.format.DateUtils
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
-import androidx.core.content.ContextCompat
-import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.psycareapp.DetailDiscussionActivity
-import com.example.psycareapp.R
-import com.example.psycareapp.data.ArticlesItem
-import com.example.psycareapp.data.Discussion
-import com.example.psycareapp.data.TestItem
+import com.example.psycareapp.data.DiscussionItem
 import com.example.psycareapp.databinding.DiscussionItemBinding
-import com.example.psycareapp.databinding.QuestionItemBinding
-import java.util.*
 import kotlin.collections.ArrayList
 
-class DiscussionAdapter(private val discussionList: ArrayList<Discussion>, private val onSavedDiscussion: OnSavedDiscussion): RecyclerView.Adapter<DiscussionAdapter.ViewHolder>() {
+class DiscussionAdapter(private val discussionList: ArrayList<DiscussionItem>, private val onSavedDiscussion: OnSavedDiscussion): RecyclerView.Adapter<DiscussionAdapter.ViewHolder>() {
 
     class ViewHolder(val binding: DiscussionItemBinding): RecyclerView.ViewHolder(binding.root)
 
@@ -36,10 +25,10 @@ class DiscussionAdapter(private val discussionList: ArrayList<Discussion>, priva
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val discussion = discussionList[position]
 
-        holder.binding.usernameDiscussion.text = discussion.writer
-        holder.binding.descDiscussion.text = discussion.description
-        if (discussion.timestamp != null) {
-            holder.binding.timestampDiscussion.setReferenceTime(discussion.timestamp)
+        holder.binding.usernameDiscussion.text = discussion.nickname
+        holder.binding.descDiscussion.text = discussion.isi
+        if (discussion.date != null) {
+            holder.binding.timestampDiscussion.setReferenceTime(discussion.date)
         }
 
         holder.binding.imageView4.setOnClickListener {
@@ -48,7 +37,7 @@ class DiscussionAdapter(private val discussionList: ArrayList<Discussion>, priva
 
         holder.itemView.setOnClickListener {
             val intentDetail = Intent(holder.itemView.context, DetailDiscussionActivity::class.java)
-            intentDetail.putExtra("idDiscussion", discussion.idDiscussion)
+            intentDetail.putExtra("idDiscussion", discussion.discussionId)
             holder.itemView.context.startActivity(intentDetail)
         }
     }

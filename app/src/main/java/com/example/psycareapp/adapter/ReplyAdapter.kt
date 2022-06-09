@@ -1,16 +1,13 @@
 package com.example.psycareapp.adapter
 
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.psycareapp.DetailDiscussionActivity
-import com.example.psycareapp.data.Discussion
+import com.example.psycareapp.data.DiscussionItem
 import com.example.psycareapp.databinding.DiscussionItemBinding
 
-class ReplyAdapter(private val discussionList: ArrayList<Discussion>): RecyclerView.Adapter<ReplyAdapter.ViewHolder>() {
+class ReplyAdapter(private val discussionList: ArrayList<DiscussionItem>): RecyclerView.Adapter<ReplyAdapter.ViewHolder>() {
 
     class ViewHolder(val binding: DiscussionItemBinding): RecyclerView.ViewHolder(binding.root)
 
@@ -26,10 +23,10 @@ class ReplyAdapter(private val discussionList: ArrayList<Discussion>): RecyclerV
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val discussion = discussionList[position]
 
-        holder.binding.usernameDiscussion.text = discussion.writer
-        holder.binding.descDiscussion.text = discussion.description
-        if (discussion.timestamp != null) {
-            holder.binding.timestampDiscussion.setReferenceTime(discussion.timestamp)
+        holder.binding.usernameDiscussion.text = discussion.nickname
+        holder.binding.descDiscussion.text = discussion.isi
+        if (discussion.date != null) {
+            holder.binding.timestampDiscussion.setReferenceTime(discussion.date)
         }
 
         holder.binding.imageView4.visibility = View.GONE

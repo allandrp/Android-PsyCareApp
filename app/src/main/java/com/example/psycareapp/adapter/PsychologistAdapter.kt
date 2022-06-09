@@ -2,17 +2,14 @@ package com.example.psycareapp.adapter
 
 import android.content.Intent
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.psycareapp.MapsActivity
-import com.example.psycareapp.data.Discussion
-import com.example.psycareapp.data.PsikologResponse
-import com.example.psycareapp.databinding.DiscussionItemBinding
+import com.example.psycareapp.data.PsikologItem
 import com.example.psycareapp.databinding.PsychologistItemBinding
 import java.util.ArrayList
 
-class PsychologistAdapter(private val psychologistList: ArrayList<PsikologResponse>): RecyclerView.Adapter<PsychologistAdapter.ViewHolder>() {
+class PsychologistAdapter(private val psychologistList: ArrayList<PsikologItem?>): RecyclerView.Adapter<PsychologistAdapter.ViewHolder>() {
 
     class ViewHolder(val binding: PsychologistItemBinding): RecyclerView.ViewHolder(binding.root)
 
@@ -28,9 +25,9 @@ class PsychologistAdapter(private val psychologistList: ArrayList<PsikologRespon
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val psychologist = psychologistList[position]
 
-        holder.binding.namePsycholog.text = psychologist.name
+        holder.binding.namePsycholog.text = psychologist?.name
         var expertise = ""
-        psychologist.expertise?.forEach {
+        psychologist?.expertise?.forEach {
             expertise = "$expertise | $it"
         }
 
@@ -39,8 +36,8 @@ class PsychologistAdapter(private val psychologistList: ArrayList<PsikologRespon
             val intentMap = Intent(holder.itemView.context, MapsActivity::class.java)
             intentMap.putExtra("psychologist", true)
             intentMap.putExtra("name", psychologist?.name)
-            intentMap.putExtra("lat", psychologist.lat?.toDouble())
-            intentMap.putExtra("lng", psychologist.lng?.toDouble())
+            intentMap.putExtra("lat", psychologist?.lat?.toDouble())
+            intentMap.putExtra("lng", psychologist?.lng?.toDouble())
             holder.itemView.context.startActivity(intentMap)
         }
     }

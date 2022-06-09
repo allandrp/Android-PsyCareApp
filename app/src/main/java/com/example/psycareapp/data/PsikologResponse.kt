@@ -4,8 +4,21 @@ import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 import kotlinx.android.parcel.Parcelize
 
-
+@Parcelize
 data class PsikologResponse(
+
+	@field:SerializedName("msg")
+	val msg: String? = null,
+
+	@field:SerializedName("data")
+	val listPsikolog: ArrayList<PsikologItem?>? = null,
+
+	@field:SerializedName("status")
+	val status: String? = null
+) : Parcelable
+
+@Parcelize
+data class PsikologItem(
 
 	@field:SerializedName("psikologId")
 	val psikologId: String? = null,
@@ -24,4 +37,4 @@ data class PsikologResponse(
 
 	@field:SerializedName("long")
 	val lng: String? = null
-)
+) : Parcelable

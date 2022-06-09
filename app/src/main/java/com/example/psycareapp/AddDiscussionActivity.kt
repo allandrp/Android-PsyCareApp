@@ -4,8 +4,12 @@ import android.os.Bundle
 import android.view.View
 import android.view.WindowManager
 import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.example.psycareapp.databinding.ActivityAddDiscussionBinding
+import com.example.psycareapp.repository.Result
+import com.example.psycareapp.viewmodel.DiscussionViewModel
+import com.example.psycareapp.viewmodel.ViewModelFactory
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
@@ -15,7 +19,9 @@ import java.util.*
 class AddDiscussionActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAddDiscussionBinding
     private lateinit var fbAuth: FirebaseAuth
-    private val dbFirestore = Firebase.firestore
+    private val discussionsViewModel: DiscussionViewModel by viewModels {
+        ViewModelFactory.getInstance()
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,43 +48,10 @@ class AddDiscussionActivity : AppCompatActivity() {
                 binding.descDiscussionLayout.error = "Can't Empty"
             }
 
-
             if(binding.descDiscussion.text.toString().isNotEmpty() && binding.usernamePost.text.toString().isNotEmpty()){
-                binding.progressBarAddDiscussion.visibility = View.VISIBLE
-                binding.usernamePost.isEnabled = false
-                binding.descDiscussion.isEnabled = false
-                binding.btnSendPost.isEnabled = false
-
-                if(fbAuth.currentUser != null){
-                    dbFirestore.collection("discussions")
-                        .add(
-                            mapOf("idCreator" to fbAuth.currentUser!!.uid,
-                            "writer" to binding.usernamePost.text.toString().trim(),
-                            "description" to binding.descDiscussion.text.toString().trim(),
-                            "timestamp" to Date().time,
-                            "reply" to null)
-                        )
-
-                        .addOnSuccessListener {
-                            Toast.makeText(this, "post successful", Toast.LENGTH_SHORT).show()
-                            binding.progressBarAddDiscussion.visibility = View.GONE
-                            binding.usernamePost.isEnabled = true
-                            binding.descDiscussion.isEnabled = true
-                            binding.btnSendPost.isEnabled = true
-                            finish()
-                        }
-
-                        .addOnFailureListener { error ->
-                            binding.progressBarAddDiscussion.visibility = View.GONE
-                            binding.usernamePost.isEnabled = true
-                            binding.descDiscussion.isEnabled = true
-                            binding.btnSendPost.isEnabled = true
-
-                            Snackbar.make(binding.root, error.message.toString(), Snackbar.LENGTH_LONG)
-                                .setBackgroundTint(resources.getColor(R.color.error))
-                                .setActionTextColor(resources.getColor(R.color.white))
-                                .show()
-                        }
+                val currentUser = fbAuth.currentUser
+                if(currentUser != null){
+                    postDiscussions(currentUser.uid, binding.usernamePost.text.toString(), binding.descDiscussion.text.toString())
                 }
             }
         }
@@ -86,6 +59,42 @@ class AddDiscussionActivity : AppCompatActivity() {
         binding.exitAddDiscussion.setOnClickListener {
             finish()
         }
+    }
 
+    private fun postDiscussions(uid: String, nickname: String, description: String){
+        discussionsViewModel.postDiscussions(uid, nickname, description).observe(this){
+            when (it){
+                is Result.Loading ->{
+                    isLoading(true)
+                    binding.usernamePost.isEnabled = false
+                    binding.descDiscussion.isEnabled = false
+                    binding.btnSendPost.isEnabled = false
+                }
+
+                is Result.Success -> {
+                    isLoading(false)
+                    finish()
+                }
+
+                is Result.Error -> {
+                    isLoading(false)
+                    binding.usernamePost.isEnabled = true
+                    binding.descDiscussion.isEnabled = true
+                    binding.btnSendPost.isEnabled = true
+                    Snackbar.make(binding.root, it.error, Snackbar.LENGTH_LONG)
+                        .setBackgroundTint(resources.getColor(R.color.error))
+                        .setActionTextColor(resources.getColor(R.color.white))
+                        .show()
+                }
+            }
+        }
+    }
+
+    private fun isLoading(loading: Boolean){
+        if(loading){
+            binding.progressBarAddDiscussion.visibility = View.VISIBLE
+        }else{
+            binding.progressBarAddDiscussion.visibility = View.GONE
+        }
     }
 }

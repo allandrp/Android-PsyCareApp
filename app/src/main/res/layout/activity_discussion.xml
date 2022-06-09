@@ -12,14 +12,14 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_discussion"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="gone"
-        tools:layout_editor_absoluteX="-16dp"
-        tools:layout_editor_absoluteY="114dp"
-        tools:listitem="@layout/discussion_item" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_discussion"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="visible"
+            tools:layout_editor_absoluteX="-16dp"
+            tools:layout_editor_absoluteY="114dp"
+            tools:listitem="@layout/discussion_item" />
 
     <ImageView
         android:id="@+id/imageView"
@@ -35,7 +35,7 @@
         app:srcCompat="@drawable/discussion_empty" />
 
     <TextView
-        android:id="@+id/textView7"
+        android:id="@+id/textViewEmptyDiscussion"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
