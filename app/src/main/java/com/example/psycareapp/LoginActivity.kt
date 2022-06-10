@@ -13,6 +13,7 @@ import android.widget.TextView
 import android.widget.Toast
 import com.example.psycareapp.customview.*
 import com.example.psycareapp.databinding.ActivityLoginBinding
+import com.example.psycareapp.utils.Utils
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
@@ -59,15 +60,15 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun login() {
-        showLoading(true)
+        Utils.isLoading(binding.progressBarLogin, true)
         fbAuth.signInWithEmailAndPassword(usernameEditText.text.toString(), passwordEditText.text.toString())
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
                     startActivity(Intent(this, MainActivity::class.java))
-                    showLoading(false)
+                    Utils.isLoading(binding.progressBarLogin, false)
                     finish()
                 } else {
-                    showLoading(false)
+                    Utils.isLoading(binding.progressBarLogin, false)
                     Toast.makeText(this, task.exception?.message, Toast.LENGTH_SHORT).show()
                 }
             }
@@ -101,13 +102,5 @@ class LoginActivity : AppCompatActivity() {
             override fun afterTextChanged(s: Editable) {
             }
         })
-    }
-
-    private fun showLoading(loading: Boolean){
-        if(loading){
-            binding.progressBarLogin.visibility = View.VISIBLE
-        }else{
-            binding.progressBarLogin.visibility = View.GONE
-        }
     }
 }

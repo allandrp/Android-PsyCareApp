@@ -1,8 +1,18 @@
 package com.example.psycareapp.utils
 
+import android.view.View
+import android.widget.ProgressBar
 import com.example.psycareapp.data.TestItem
 
 object Utils {
+
+    fun isLoading(progressbar: ProgressBar, loading: Boolean){
+        if(loading){
+            progressbar.visibility = View.VISIBLE
+        }else{
+            progressbar.visibility = View.GONE
+        }
+    }
     fun getTestItems(language: String): ArrayList<TestItem> {
         val testItems = ArrayList<TestItem>()
 

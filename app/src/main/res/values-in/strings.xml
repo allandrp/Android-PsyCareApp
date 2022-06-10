@@ -42,4 +42,6 @@
     <string name="discussion_hint">Apa yang ingin anda bagikan ?</string>
     <string name="writer">Penulis</string>
     <string name="send_text">Kirim</string>
+    <string name="psychologist_empty">TIDAK ADA PSIKOLOG</string>
+    <string name="greeting_default">Hi User, Bagaimana Harimu</string>
 </resources>

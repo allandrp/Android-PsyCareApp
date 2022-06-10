@@ -14,6 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PsyCareApp">
         <activity
+            android:name=".PsychologistActivity"
+            android:exported="false" />
+        <activity
             android:name=".AddDiscussionActivity"
             android:exported="false" />
 
@@ -55,7 +58,7 @@
             android:exported="false" />
         <activity
             android:name=".MainActivity"
-            android:exported="false"></activity>
+            android:exported="false" />
 
         <meta-data
             android:name="preloaded_fonts"

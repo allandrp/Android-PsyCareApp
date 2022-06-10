@@ -1,33 +1,34 @@
 {
   "project_info": {
-    "project_number": "236443968134",
-    "project_id": "psycareapp",
-    "storage_bucket": "psycareapp.appspot.com"
+    "project_number": "1017559630937",
+    "firebase_url": "https://psycare-app-bangkit-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "psycare-app-bangkit",
+    "storage_bucket": "psycare-app-bangkit.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:236443968134:android:276cb8af2ff7d8ef19e707",
+        "mobilesdk_app_id": "1:1017559630937:android:2fe1700bbce60af0471d48",
         "android_client_info": {
           "package_name": "com.example.psycareapp"
         }
       },
       "oauth_client": [
         {
-          "client_id": "236443968134-eod75lss1i9f7jlsmn5ingq5nrcr4mk4.apps.googleusercontent.com",
+          "client_id": "1017559630937-cui784vnlibfs2v7apj0nprp0chmpttd.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCeJotJfh5KxBdAJZAQjcjocqVa3RkN8f0"
+          "current_key": "AIzaSyBdATjv2JbRUUsjgTs7sxusqRTlIuzPCpE"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "236443968134-eod75lss1i9f7jlsmn5ingq5nrcr4mk4.apps.googleusercontent.com",
+              "client_id": "1017559630937-cui784vnlibfs2v7apj0nprp0chmpttd.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

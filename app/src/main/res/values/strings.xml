@@ -45,4 +45,6 @@
     <string name="what_you_can_do">What You Can Do ?</string>
     <string name="writer">Writer</string>
     <string name="send_text">Send</string>
+    <string name="psychologist_empty">NO PSYCHOLOGIST HERE</string>
+    <string name="greeting_default">Hi User, How Was Your Day ?</string>
 </resources>

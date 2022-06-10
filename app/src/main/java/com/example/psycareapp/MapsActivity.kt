@@ -2,6 +2,7 @@ package com.example.psycareapp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -15,11 +16,21 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
     private lateinit var mMap: GoogleMap
     private lateinit var binding: ActivityMapsBinding
+    var lat = -34.0
+    var lng = 151.0
+    var isList = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMapsBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        if(intent.getBooleanExtra("psychologist", false)){
+            lat = intent.getDoubleExtra("lat", 0.0)
+            lng = intent.getDoubleExtra("lng", 0.0)
+        }else{
+            isList = true
+        }
 
         binding.mapView.getMapAsync(this)
         binding.mapView.onCreate(savedInstanceState)
@@ -28,10 +39,15 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
 
-        // Add a marker in Sydney and move the camera
-        val sydney = LatLng(-34.0, 151.0)
-        mMap.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))
+        if(isList){
+            Toast.makeText(this, "MASUK IS LIST", Toast.LENGTH_SHORT).show()
+        }else{
+            val coordinate = LatLng(lat, lng)
+            mMap.addMarker(MarkerOptions().position(coordinate).title(intent.getStringExtra("name")))
+            mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(
+                coordinate, 15f))
+        }
+
     }
 
     override fun onStart() {
