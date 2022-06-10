@@ -6,7 +6,6 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class DiscussionsResponse(
-
 	@field:SerializedName("msg")
 	val msg: String? = null,
 
@@ -21,19 +20,22 @@ data class DiscussionsResponse(
 data class DiscussionItem(
 
 	@field:SerializedName("id_creator")
-	val idCreator: String? = null,
+	val idCreator: String,
+
+	@field:SerializedName("email")
+	val email: String,
 
 	@field:SerializedName("discussionId")
-	val discussionId: String? = null,
+	val discussionId: String,
 
 	@field:SerializedName("nickname")
-	val nickname: String? = null,
+	val nickname: String,
 
 	@field:SerializedName("isi")
-	val isi: String? = null,
+	val isi: String,
 
 	@field:SerializedName("date")
-	val date: Long? = null
+	val date: Long
 ) : Parcelable
 
 data class PostDiscussionsResponse(
@@ -46,3 +48,5 @@ data class PostDiscussionsResponse(
 	@field:SerializedName("status")
 	val status: String? = null
 )
+
+

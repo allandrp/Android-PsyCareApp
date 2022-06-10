@@ -12,6 +12,7 @@ import com.example.psycareapp.data.PsikologItem
 import com.example.psycareapp.data.PsikologResponse
 import com.example.psycareapp.databinding.ActivityPsychologistBinding
 import com.example.psycareapp.repository.Result
+import com.example.psycareapp.utils.Utils
 import com.example.psycareapp.viewmodel.PsychologistViewModel
 import com.example.psycareapp.viewmodel.TestViewModel
 import com.example.psycareapp.viewmodel.ViewModelFactory
@@ -34,7 +35,7 @@ class PsychologistActivity : AppCompatActivity() {
         psychologistViewModel.getPsychologist().observe(this){
             when(it){
                 is Result.Success ->{
-                    isLoading(false)
+                    Utils.isLoading(binding.progressBarPsychologist, false)
                     if(it.data.listPsikolog?.isNotEmpty() == true){
                         listPshycologist = it.data.listPsikolog
                     }else{
@@ -49,13 +50,13 @@ class PsychologistActivity : AppCompatActivity() {
                 }
 
                 is Result.Loading -> {
-                    isLoading(true)
+                    Utils.isLoading(binding.progressBarPsychologist, true)
                     binding.imageViewEmptyPsychologist.visibility = View.GONE
                     binding.textViewEmptyPsychologist.visibility = View.GONE
                 }
 
                 is Result.Error -> {
-                    isLoading(false)
+                    Utils.isLoading(binding.progressBarPsychologist,false)
                     binding.imageViewEmptyPsychologist.visibility = View.VISIBLE
                     binding.textViewEmptyPsychologist.visibility = View.VISIBLE
                     Snackbar.make(binding.root, it.error, Snackbar.LENGTH_LONG)
@@ -64,14 +65,6 @@ class PsychologistActivity : AppCompatActivity() {
                         .show()
                 }
             }
-        }
-    }
-
-    private fun isLoading(loading: Boolean){
-        if(loading){
-            binding.progressBarPsychologist.visibility = View.VISIBLE
-        }else{
-            binding.progressBarPsychologist.visibility = View.GONE
         }
     }
 }

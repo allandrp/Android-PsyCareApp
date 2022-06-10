@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.psycareapp.adapter.NewsAdapter
 import com.example.psycareapp.databinding.ActivityMainBinding
 import com.example.psycareapp.repository.Result
+import com.example.psycareapp.utils.Utils
 import com.example.psycareapp.viewmodel.HomeViewModel
 import com.example.psycareapp.viewmodel.ViewModelFactory
 import com.google.firebase.auth.FirebaseAuth
@@ -35,10 +36,27 @@ class MainActivity : AppCompatActivity() {
 
         fbAuth = FirebaseAuth.getInstance()
 
-        if(fbAuth.currentUser == null){
+        val currentUser = fbAuth.currentUser
+        if(currentUser == null){
             startActivity(Intent(this, LoginActivity::class.java))
         }else{
-            binding.greetingText.text = getString(R.string.greeting_user_text, fbAuth.currentUser!!.email?.split("@")?.get(0))
+            homeViewModel.getUser(currentUser.uid).observe(this){ result ->
+                when(result){
+                    is Result.Success -> {
+                        val username = result.data.dataUser?.username
+                        if(username != null){
+                            binding.greetingText.text = getString(R.string.greeting_user_text, username)
+                        }else{
+                            binding.greetingText.text = getString(R.string.greeting_user_text, fbAuth.currentUser!!.email?.split("@")?.get(0))
+                        }
+                    }
+
+                    is Result.Error -> {
+                        binding.greetingText.text = getString(R.string.greeting_user_text, fbAuth.currentUser!!.email?.split("@")?.get(0))
+                    }
+                }
+            }
+
         }
 
         val language = if(getCurrentLocale(this)?.language.toString() != "in"){
@@ -50,7 +68,7 @@ class MainActivity : AppCompatActivity() {
         homeViewModel.getArticles(language).observe(this){
             when(it){
                 is Result.Success -> {
-                    showLoading(false)
+                    Utils.isLoading(binding.progressBar, false)
                     binding.recyclerViewNews.adapter = adapterNews
                     binding.recyclerViewNews.layoutManager = LinearLayoutManager(this)
                     binding.recyclerViewNews.setHasFixedSize(true)
@@ -59,11 +77,11 @@ class MainActivity : AppCompatActivity() {
                 }
 
                 is Result.Error -> {
-                    showLoading(false)
+                    Utils.isLoading(binding.progressBar, false)
                 }
 
                 is Result.Loading ->{
-                    showLoading(true)
+                    Utils.isLoading(binding.progressBar, false)
                 }
             }
         }
@@ -106,14 +124,6 @@ class MainActivity : AppCompatActivity() {
             }
 
             else -> true
-        }
-    }
-
-    private fun showLoading(loading: Boolean){
-        if(loading){
-            binding.progressBar.visibility = View.VISIBLE
-        }else{
-            binding.progressBar.visibility = View.GONE
         }
     }
 

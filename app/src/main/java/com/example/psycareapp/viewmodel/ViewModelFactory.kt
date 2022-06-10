@@ -12,7 +12,7 @@ class ViewModelFactory(private val newsRepository: NewsRepository, private val p
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         return when {
             modelClass.isAssignableFrom(HomeViewModel::class.java) -> {
-                HomeViewModel(newsRepository) as T
+                HomeViewModel(newsRepository, psyCareRepository) as T
             }
 
             modelClass.isAssignableFrom(TestViewModel::class.java) -> {

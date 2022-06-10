@@ -8,8 +8,10 @@ import android.widget.ImageView
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.psycareapp.adapter.DiscussionAdapter
+import com.example.psycareapp.data.DiscussionItem
 import com.example.psycareapp.databinding.ActivityDiscussionBinding
 import com.example.psycareapp.repository.Result
+import com.example.psycareapp.utils.Utils
 import com.example.psycareapp.viewmodel.DiscussionViewModel
 import com.example.psycareapp.viewmodel.ViewModelFactory
 
@@ -40,20 +42,22 @@ class DiscussionActivity : AppCompatActivity(), DiscussionAdapter.OnSavedDiscuss
     }
 
     private fun getAllDiscussion(){
-        discussionsViewModel.getDiscussions().observe(this){
-            when(it){
+        discussionsViewModel.getDiscussions().observe(this){ result ->
+            when(result){
 
                 is Result.Loading -> {
-                    isLoading(true)
+                    Utils.isLoading(binding.progressBarDiscussion, true)
                     binding.imageView.visibility = View.GONE
                     binding.textViewEmptyDiscussion.visibility = View.GONE
                 }
 
                 is Result.Success -> {
-                    isLoading(false)
+                    Utils.isLoading(binding.progressBarDiscussion, false)
                     binding.floatingActionButtonDiscussion.visibility = View.VISIBLE
-                    if(it.data.listDiscussions.isNotEmpty()){
-                        adapterDiscussion = DiscussionAdapter(it.data.listDiscussions, this)
+                    if(result.data.listDiscussions.isNotEmpty()){
+                        val listDiscussionSort = arrayListOf<DiscussionItem>()
+                        result.data.listDiscussions.sortedByDescending { it.date }.toCollection(listDiscussionSort)
+                        adapterDiscussion = DiscussionAdapter(listDiscussionSort, this)
                         binding.rvDiscussion.adapter = adapterDiscussion
                         binding.rvDiscussion.layoutManager = LinearLayoutManager(this)
                     }else{
@@ -63,7 +67,8 @@ class DiscussionActivity : AppCompatActivity(), DiscussionAdapter.OnSavedDiscuss
                 }
 
                 is Result.Error -> {
-                    isLoading(false)
+                    Utils.isLoading(binding.progressBarDiscussion, false)
+                    binding.floatingActionButtonDiscussion.visibility = View.VISIBLE
                     binding.imageView.visibility = View.VISIBLE
                     binding.textViewEmptyDiscussion.visibility = View.VISIBLE
                 }
@@ -74,13 +79,4 @@ class DiscussionActivity : AppCompatActivity(), DiscussionAdapter.OnSavedDiscuss
 
     override fun onClickBookmark(position: Int, imgView: ImageView) {
     }
-
-    private fun isLoading(loading: Boolean){
-        if(loading){
-            binding.progressBarDiscussion.visibility = View.VISIBLE
-        }else{
-            binding.progressBarDiscussion.visibility = View.GONE
-        }
-    }
-
 }

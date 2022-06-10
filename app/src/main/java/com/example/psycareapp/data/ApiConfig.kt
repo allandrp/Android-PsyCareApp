@@ -23,7 +23,7 @@ class ApiConfig {
 
         fun getApiPsyCare(): ApiPsyCareService{
             val retrofit = Retrofit.Builder().apply {
-                baseUrl("https://us-central1-psycare-app-bangkit.cloudfunctions.net/app/api/")
+                baseUrl("https://asia-southeast2-psycare-app-bangkit.cloudfunctions.net/app/api/")
                 addConverterFactory(GsonConverterFactory.create())
                 client(client)
             }.build()

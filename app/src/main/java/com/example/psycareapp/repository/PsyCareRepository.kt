@@ -2,10 +2,7 @@ package com.example.psycareapp.repository
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
-import com.example.psycareapp.data.ApiPsyCareService
-import com.example.psycareapp.data.DiscussionsResponse
-import com.example.psycareapp.data.PostDiscussionsResponse
-import com.example.psycareapp.data.PsikologResponse
+import com.example.psycareapp.data.*
 import kotlin.collections.ArrayList
 
 class PsyCareRepository(private val apiService: ApiPsyCareService){
@@ -62,11 +59,11 @@ class PsyCareRepository(private val apiService: ApiPsyCareService){
 
     }
 
-    fun postDiscussions(id: String, nickname: String, description: String): LiveData<Result<PostDiscussionsResponse>> = liveData{
+    fun postDiscussions(id: String, nickname: String, description: String, email: String): LiveData<Result<PostDiscussionsResponse>> = liveData{
         emit(Result.Loading)
 
         try {
-            val response = apiService.postDiscussions(id, nickname, description)
+            val response = apiService.postDiscussions(id, nickname, description, email)
 
             when {
                 response.status != "ok" ->{
@@ -83,6 +80,83 @@ class PsyCareRepository(private val apiService: ApiPsyCareService){
         }
 
     }
+
+    fun getReply(idDiscussion: String): LiveData<Result<ReplyResponse>> = liveData{
+        emit(Result.Loading)
+
+        try {
+            val response = apiService.getReply(idDiscussion)
+
+            when {
+
+                response.listReply.isNullOrEmpty() -> {
+                    emit(Result.Error("No data"))
+                }
+
+                response.status != "ok" ->{
+                    emit(Result.Error("Error"))
+                }
+
+                else -> {
+                    emit(Result.Success(response))
+                }
+            }
+
+        }catch (e: Exception){
+            emit(Result.Error(e.message.toString()))
+        }
+
+    }
+
+    fun getUser(idUser: String): LiveData<Result<UsersResponse>> = liveData{
+        emit(Result.Loading)
+
+        try {
+            val response = apiService.getUsers(idUser)
+
+            when {
+
+                response.dataUser == null -> {
+                    emit(Result.Error("No data"))
+                }
+
+                response.status != "ok" ->{
+                    emit(Result.Error("Error"))
+                }
+
+                else -> {
+                    emit(Result.Success(response))
+                }
+            }
+
+        }catch (e: Exception){
+            emit(Result.Error(e.message.toString()))
+        }
+
+    }
+
+    fun postReply(idCreator: String, nickname: String, description: String, email: String, idDiscussion: String): LiveData<Result<ReplyResponse>> = liveData{
+        emit(Result.Loading)
+
+        try {
+            val response = apiService.postReply(idCreator, nickname, description, email, idDiscussion)
+
+            when {
+                response.status != "ok" ->{
+                    emit(Result.Error(response.msg.toString()))
+                }
+
+                else -> {
+                    emit(Result.Success(response))
+                }
+            }
+
+        }catch (e: Exception){
+            emit(Result.Error(e.message.toString()))
+        }
+
+    }
+
     companion object{
         @Volatile
         private var instance: PsyCareRepository? = null

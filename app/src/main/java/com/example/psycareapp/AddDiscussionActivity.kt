@@ -51,7 +51,7 @@ class AddDiscussionActivity : AppCompatActivity() {
             if(binding.descDiscussion.text.toString().isNotEmpty() && binding.usernamePost.text.toString().isNotEmpty()){
                 val currentUser = fbAuth.currentUser
                 if(currentUser != null){
-                    postDiscussions(currentUser.uid, binding.usernamePost.text.toString(), binding.descDiscussion.text.toString())
+                    postDiscussions(currentUser.uid, binding.usernamePost.text.toString(), binding.descDiscussion.text.toString(), currentUser.email.toString())
                 }
             }
         }
@@ -61,8 +61,8 @@ class AddDiscussionActivity : AppCompatActivity() {
         }
     }
 
-    private fun postDiscussions(uid: String, nickname: String, description: String){
-        discussionsViewModel.postDiscussions(uid, nickname, description).observe(this){
+    private fun postDiscussions(uid: String, nickname: String, description: String, email: String){
+        discussionsViewModel.postDiscussions(uid, nickname, description, email).observe(this){
             when (it){
                 is Result.Loading ->{
                     isLoading(true)

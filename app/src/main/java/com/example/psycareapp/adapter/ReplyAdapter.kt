@@ -5,18 +5,20 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.psycareapp.data.DiscussionItem
-import com.example.psycareapp.databinding.DiscussionItemBinding
+import com.example.psycareapp.data.ReplyItem
+import com.example.psycareapp.data.User
+import com.example.psycareapp.databinding.ReplyItemBinding
 
-class ReplyAdapter(private val discussionList: ArrayList<DiscussionItem>): RecyclerView.Adapter<ReplyAdapter.ViewHolder>() {
+class ReplyAdapter(private val discussionList: ArrayList<ReplyItem>, private val discussionClick: DiscussionItem): RecyclerView.Adapter<ReplyAdapter.ViewHolder>() {
 
-    class ViewHolder(val binding: DiscussionItemBinding): RecyclerView.ViewHolder(binding.root)
+    class ViewHolder(val binding: ReplyItemBinding): RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
     ): ViewHolder {
         val binding =
-            DiscussionItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            ReplyItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(binding)
     }
 
@@ -24,12 +26,25 @@ class ReplyAdapter(private val discussionList: ArrayList<DiscussionItem>): Recyc
         val discussion = discussionList[position]
 
         holder.binding.usernameDiscussion.text = discussion.nickname
-        holder.binding.descDiscussion.text = discussion.isi
+        holder.binding.descDiscussion.text = discussion.description
         if (discussion.date != null) {
             holder.binding.timestampDiscussion.setReferenceTime(discussion.date)
         }
 
-        holder.binding.imageView4.visibility = View.GONE
+        var email = discussion.email
+        val first2: String = (email?.get(0).toString()) + (email?.get(1).toString())
+
+        email = email?.substring(2)
+        email = email?.replace("[^@]".toRegex(), "*")
+
+
+        if(discussionClick.idCreator == discussion.idCreator){
+            holder.binding.creatorMark.visibility = View.VISIBLE
+            holder.binding.textView10.visibility = View.GONE
+        }else{
+            holder.binding.creatorMark.visibility = View.GONE
+            holder.binding.textView10.text = "$first2$email"
+        }
     }
 
     override fun getItemCount(): Int = discussionList.size

@@ -37,7 +37,7 @@ class DiscussionAdapter(private val discussionList: ArrayList<DiscussionItem>, p
 
         holder.itemView.setOnClickListener {
             val intentDetail = Intent(holder.itemView.context, DetailDiscussionActivity::class.java)
-            intentDetail.putExtra("idDiscussion", discussion.discussionId)
+            intentDetail.putExtra("discussionData", discussion)
             holder.itemView.context.startActivity(intentDetail)
         }
     }
