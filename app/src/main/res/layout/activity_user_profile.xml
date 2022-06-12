@@ -16,53 +16,53 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:src="@drawable/ic_baseline_account_circle_24"
-        />
+        app:tint="@color/blue_theme_main" />
 
-    <TextView
+    <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/username_user_profile"
-        android:layout_width="wrap_content"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:fontFamily="@font/poppins"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/avatar_user_profile"
-        tools:text="DANIEL SANJAYA" />
-
-    <Button
-        android:id="@+id/edit_name_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/username_user_profile"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
-        android:text="EDIT NAME" />
+        android:layout_marginEnd="16dp"
+        android:hint="@string/username"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/avatar_user_profile">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/username_profile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="Alland"
+            android:enabled="false"
+            android:inputType="textPersonName" />
+
+    </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/history_user_profile_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="16dp"
         android:text="HISTORY"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edit_name_button"
-        android:layout_marginTop="16dp"/>
+        app:layout_constraintTop_toBottomOf="@+id/username_user_profile" />
 
     <Button
         android:id="@+id/favourite_discussion_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="8dp"
+        android:text="FAVOURITE DISCUSSION"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/history_user_profile_button"
-        android:text="FAVOURITE DISCUSSION"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="13dp"/>
+        app:layout_constraintTop_toBottomOf="@+id/history_user_profile_button" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

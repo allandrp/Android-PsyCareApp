@@ -26,6 +26,10 @@ class ViewModelFactory(private val newsRepository: NewsRepository, private val p
                 DiscussionViewModel(psyCareRepository) as T
             }
 
+            modelClass.isAssignableFrom(ProfileViewModel::class.java) -> {
+                ProfileViewModel(psyCareRepository) as T
+            }
+
             else -> throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
         }
     }

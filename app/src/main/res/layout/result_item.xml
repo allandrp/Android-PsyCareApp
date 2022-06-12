@@ -6,8 +6,7 @@
     android:layout_height="wrap_content"
     android:layout_gravity="center"
     app:cardCornerRadius="10dp"
-    android:layout_marginBottom="16dp"
-    android:layout_marginTop="16dp">
+    android:layout_marginBottom="8dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -17,8 +16,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginVertical="26dp"
-            android:layout_marginHorizontal="19dp"
+            android:layout_marginVertical="16dp"
+            android:layout_marginHorizontal="8dp"
             android:orientation="vertical">
 
             <TextView
@@ -30,6 +29,7 @@
                 android:fontFamily="@font/poppins"
                 android:textSize="26sp"
                 android:textStyle="bold"
+                android:textColor="@color/blue_dark_text_main"
                 tools:text="@string/anxiety"
                 android:layout_marginTop="8dp"/>
 
@@ -37,26 +37,25 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginHorizontal="16dp"
-                android:gravity="center">
+                android:layout_marginHorizontal="8dp"
+                android:gravity="start">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/status"
-                    android:textStyle="bold"
+                    android:textColor="@color/blue_dark_text_main"
                     android:textSize="20sp"
-                    android:fontFamily="@font/poppins"/>
+                    android:fontFamily="@font/poppins_medium"/>
 
                 <TextView
                     android:id="@+id/status_condition"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="16dp"
+                    android:layout_marginLeft="8dp"
                     android:textSize="20sp"
-                    android:textStyle="bold"
                     tools:text="@string/moderate"
-                    android:fontFamily="@font/poppins"/>
+                    android:fontFamily="@font/poppins_medium"/>
 
             </LinearLayout>
 
@@ -64,24 +63,28 @@
                 android:id="@+id/description"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="@color/black"
                 android:text="@string/dummy_test_desc"
-                android:layout_margin="16dp"/>
+                android:layout_marginBottom="16dp"
+                android:layout_marginHorizontal="8dp"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="16dp"
-                android:text="@string/what_you_can_do"
-                android:fontFamily="@font/poppins"
-                android:layout_gravity="center"
-                android:textStyle="bold"/>
+                android:textSize="20sp"
+                android:layout_marginHorizontal="8dp"
+                android:textColor="@color/blue_dark_text_main"
+                android:fontFamily="@font/poppins_medium"
+                android:text="@string/what_you_can_do" />
 
             <TextView
                 android:id="@+id/what_to_do"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="16dp"
+                android:layout_marginBottom="16dp"
+                android:layout_marginHorizontal="8dp"
                 android:fontFamily="@font/poppins"
+                android:textColor="@color/black"
                 tools:text="@string/dummy_test_desc"/>
         </LinearLayout>
 

@@ -17,7 +17,7 @@ class UserProfileActivity : AppCompatActivity() {
         val username = intent.getStringExtra("username")
         val userId = intent.getStringExtra("userId")
 
-        binding.usernameUserProfile.text = username.toString()
+        binding.usernameProfile.setText(username.toString())
 
         binding.historyUserProfileButton.setOnClickListener {
             val intent = Intent(this, TestHistoryActivity::class.java)
@@ -27,7 +27,7 @@ class UserProfileActivity : AppCompatActivity() {
         }
 
         binding.favouriteDiscussionButton.setOnClickListener {
-            val intent = Intent(this, FavouriteDiscussionsActivity::class.java)
+            val intent = Intent(this, FavouriteDiscussionActivity::class.java)
             intent.putExtra("username", username)
             intent.putExtra("userId", userId)
             startActivity(intent)
