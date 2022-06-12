@@ -135,6 +135,58 @@ class PsyCareRepository(private val apiService: ApiPsyCareService){
 
     }
 
+    fun addFavourite(idUser: String, idDiscussion: String): LiveData<Result<UsersResponse>> = liveData{
+        emit(Result.Loading)
+
+        try {
+            val response = apiService.addFavourite(idUser, idDiscussion)
+
+            when {
+                response.dataUser == null -> {
+                    emit(Result.Error("No data"))
+                }
+
+                response.status != "ok" ->{
+                    emit(Result.Error("Error"))
+                }
+
+                else -> {
+                    emit(Result.Success(response))
+                }
+            }
+
+        }catch (e: Exception){
+            emit(Result.Error(e.message.toString()))
+        }
+
+    }
+
+    fun removeFavourite(idUser: String, idDiscussion: String): LiveData<Result<UsersResponse>> = liveData{
+        emit(Result.Loading)
+
+        try {
+            val response = apiService.deleteFavourite(idUser, idDiscussion)
+
+            when {
+                response.dataUser == null -> {
+                    emit(Result.Error("No data"))
+                }
+
+                response.status != "ok" ->{
+                    emit(Result.Error("Error"))
+                }
+
+                else -> {
+                    emit(Result.Success(response))
+                }
+            }
+
+        }catch (e: Exception){
+            emit(Result.Error(e.message.toString()))
+        }
+
+    }
+
     fun postReply(idCreator: String, nickname: String, description: String, email: String, idDiscussion: String): LiveData<Result<ReplyResponse>> = liveData{
         emit(Result.Loading)
 

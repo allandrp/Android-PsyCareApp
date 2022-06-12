@@ -13,7 +13,7 @@ import androidx.appcompat.widget.AppCompatEditText
 import androidx.core.content.ContextCompat
 import com.example.psycareapp.R
 
-class EmailEditText: AppCompatEditText, View.OnTouchListener {
+class EmailEditText: com.google.android.material.textfield.TextInputEditText, View.OnTouchListener {
     private lateinit var clearButtonImage: Drawable
 
     constructor(context: Context) : super(context) {

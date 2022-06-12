@@ -6,14 +6,18 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Patterns
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import androidx.core.app.ActivityOptionsCompat
+import androidx.core.widget.doOnTextChanged
 import com.example.psycareapp.customview.*
 import com.example.psycareapp.databinding.ActivityLoginBinding
 import com.example.psycareapp.utils.Utils
+import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
@@ -24,8 +28,8 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
 
     private lateinit var loginButton: Button
-    private lateinit var usernameEditText: EmailEditText
-    private lateinit var passwordEditText: PasswordEditText
+    private lateinit var usernameEditText: TextInputEditText
+    private lateinit var passwordEditText: TextInputEditText
     private lateinit var signupButton: TextView
     private lateinit var fbAuth: FirebaseAuth
 
@@ -41,21 +45,50 @@ class LoginActivity : AppCompatActivity() {
         supportActionBar?.hide()
 
         loginButton = binding.login
-        usernameEditText = binding.username
+        usernameEditText = binding.emailLogin
         passwordEditText = binding.password
         signupButton = binding.registerLink
 
-        setLoginButtonEnable()
-        init()
-
         loginButton.setOnClickListener {
             imm.hideSoftInputFromWindow(binding.root.windowToken, 0)
-            login()
+            if(usernameEditText.text.toString().isEmpty()){
+                binding.emailLoginPostLayout.error = getString(R.string.invalid_empty)
+            }
+
+            if(passwordEditText.text.toString().isEmpty()){
+                binding.passwordPostLayout.error = getString(R.string.invalid_empty)
+            }else{
+                login()
+            }
         }
 
         signupButton.setOnClickListener {
             val intent = Intent(this, SignupActivity::class.java)
-            startActivity(intent)
+            startActivity(intent, ActivityOptionsCompat.makeSceneTransitionAnimation(this).toBundle())
+        }
+        
+        binding.emailLoginPostLayout.editText?.doOnTextChanged { text, _, _, _ ->
+            if (text.toString().isNotEmpty()) {
+                if(!Patterns.EMAIL_ADDRESS.matcher(text).matches()){
+                    binding.emailLoginPostLayout.error = getString(R.string.invalid_email)
+                }else{
+                    binding.emailLoginPostLayout.error = ""
+                }
+            }else{
+                binding.emailLoginPostLayout.error = ""
+            }
+        }
+
+        binding.passwordPostLayout.editText?.doOnTextChanged { text, _, _, _ ->
+            if (text.toString().isNotEmpty()) {
+                if(text?.length!! < 6){
+                    binding.passwordPostLayout.error = getString(R.string.invalid_password)
+                }else{
+                    binding.passwordPostLayout.error = ""
+                }
+            }else{
+                binding.passwordPostLayout.error = ""
+            }
         }
     }
 
@@ -72,35 +105,5 @@ class LoginActivity : AppCompatActivity() {
                     Toast.makeText(this, task.exception?.message, Toast.LENGTH_SHORT).show()
                 }
             }
-    }
-
-    private fun setLoginButtonEnable() {
-        val username = binding.username.text
-        val password = binding.password.text
-        loginButton.isEnabled =
-                username != null && username.toString().isNotEmpty()
-                && password != null && password.toString().length >= 6
-    }
-
-    private fun init(){
-        usernameEditText.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
-            }
-            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
-                setLoginButtonEnable()
-            }
-            override fun afterTextChanged(s: Editable) {
-            }
-        })
-
-        passwordEditText.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
-            }
-            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
-                setLoginButtonEnable()
-            }
-            override fun afterTextChanged(s: Editable) {
-            }
-        })
     }
 }

@@ -3,6 +3,7 @@ package com.example.psycareapp
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import com.example.psycareapp.data.PsikologItem
 
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -11,6 +12,7 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.example.psycareapp.databinding.ActivityMapsBinding
+import com.google.android.gms.maps.model.LatLngBounds
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
@@ -40,7 +42,27 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         mMap = googleMap
 
         if(isList){
-            Toast.makeText(this, "MASUK IS LIST", Toast.LENGTH_SHORT).show()
+            val listPsychologist = intent.getParcelableArrayListExtra<PsikologItem?>("listPsychologist")
+
+            val _listCoordinate = arrayListOf<LatLng>()
+
+            listPsychologist?.forEach {
+                lat = it.lat?.toDouble() ?: 0.0
+                lng = it.lng?.toDouble() ?: 0.0
+                val coordinate = LatLng(lat, lng)
+                val name = it.name
+                _listCoordinate.add(coordinate)
+                mMap.addMarker(MarkerOptions().position(coordinate).title(name))
+            }
+
+            val latLngBound = _listCoordinate.fold ( LatLngBounds.builder()) { builder, it ->
+                builder.include(
+                    it
+                )
+            }.build()
+
+            mMap.animateCamera(CameraUpdateFactory.newLatLngBounds(latLngBound, 100))
+
         }else{
             val coordinate = LatLng(lat, lng)
             mMap.addMarker(MarkerOptions().position(coordinate).title(intent.getStringExtra("name")))

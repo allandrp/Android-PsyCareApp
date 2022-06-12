@@ -9,25 +9,29 @@ import androidx.activity.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.psycareapp.adapter.DiscussionAdapter
 import com.example.psycareapp.data.DiscussionItem
+import com.example.psycareapp.data.UsersResponse
 import com.example.psycareapp.databinding.ActivityDiscussionBinding
 import com.example.psycareapp.repository.Result
 import com.example.psycareapp.utils.Utils
 import com.example.psycareapp.viewmodel.DiscussionViewModel
 import com.example.psycareapp.viewmodel.ViewModelFactory
+import com.google.firebase.auth.FirebaseAuth
 
-class DiscussionActivity : AppCompatActivity(), DiscussionAdapter.OnSavedDiscussion{
+class DiscussionActivity : AppCompatActivity(){
 
     private lateinit var binding: ActivityDiscussionBinding
     private lateinit var adapterDiscussion: DiscussionAdapter
     private val discussionsViewModel: DiscussionViewModel by viewModels {
         ViewModelFactory.getInstance()
     }
+    private lateinit var fbAuth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDiscussionBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        fbAuth = FirebaseAuth.getInstance()
         getAllDiscussion()
 
         binding.floatingActionButtonDiscussion.setOnClickListener {
@@ -44,7 +48,6 @@ class DiscussionActivity : AppCompatActivity(), DiscussionAdapter.OnSavedDiscuss
     private fun getAllDiscussion(){
         discussionsViewModel.getDiscussions().observe(this){ result ->
             when(result){
-
                 is Result.Loading -> {
                     Utils.isLoading(binding.progressBarDiscussion, true)
                     binding.imageView.visibility = View.GONE
@@ -57,7 +60,7 @@ class DiscussionActivity : AppCompatActivity(), DiscussionAdapter.OnSavedDiscuss
                     if(result.data.listDiscussions.isNotEmpty()){
                         val listDiscussionSort = arrayListOf<DiscussionItem>()
                         result.data.listDiscussions.sortedByDescending { it.date }.toCollection(listDiscussionSort)
-                        adapterDiscussion = DiscussionAdapter(listDiscussionSort, this)
+                        adapterDiscussion = DiscussionAdapter(listDiscussionSort)
                         binding.rvDiscussion.adapter = adapterDiscussion
                         binding.rvDiscussion.layoutManager = LinearLayoutManager(this)
                     }else{
@@ -77,6 +80,4 @@ class DiscussionActivity : AppCompatActivity(), DiscussionAdapter.OnSavedDiscuss
         }
     }
 
-    override fun onClickBookmark(position: Int, imgView: ImageView) {
-    }
 }

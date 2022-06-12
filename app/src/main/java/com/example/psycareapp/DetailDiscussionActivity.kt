@@ -19,6 +19,7 @@ import com.example.psycareapp.viewmodel.DiscussionViewModel
 import com.example.psycareapp.viewmodel.ViewModelFactory
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -34,6 +35,8 @@ class DetailDiscussionActivity : AppCompatActivity() {
     private val discussionsViewModel: DiscussionViewModel by viewModels {
         ViewModelFactory.getInstance()
     }
+    private var isFavourite = false
+    private lateinit var currentUser: FirebaseUser
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,10 +56,10 @@ class DetailDiscussionActivity : AppCompatActivity() {
         binding.descDetailDiscussion.text = dataDiscussion.isi
         binding.timestampDiscussion.setReferenceTime(dataDiscussion.date)
 
-        val currentUser = fbAuth.currentUser
+        currentUser = fbAuth.currentUser!!
         var username = currentUser?.email!!.split("@")?.get(0)
 
-        discussionsViewModel.getUser(currentUser.uid).observe(this){result->
+        discussionsViewModel.getUser(currentUser.uid).observe(this){ result->
             when(result){
                 is Result.Loading -> {
                     binding.sendButton.isEnabled = false
@@ -64,10 +67,24 @@ class DetailDiscussionActivity : AppCompatActivity() {
 
                 is Result.Success -> {
                     binding.sendButton.isEnabled = true
-                    if(dataDiscussion.idCreator == currentUser.uid){
-                        username = dataDiscussion.nickname
+                    username = if(dataDiscussion.idCreator == currentUser.uid){
+                        dataDiscussion.nickname
                     }else{
-                        username = result.data.dataUser?.username.toString()
+                        result.data.dataUser?.username.toString()
+                    }
+
+                    val listFavourite = result.data.dataUser?.favourite
+                    if(listFavourite != null){
+                        if(listFavourite.contains(dataDiscussion.discussionId)){
+                            isFavourite = true
+                            binding.favouriteButton.setImageResource(R.drawable.ic_baseline_bookmark_24)
+                        }else{
+                            isFavourite = false
+                            binding.favouriteButton.setImageResource(R.drawable.ic_baseline_bookmark_border_24)
+                        }
+                    }else{
+                        isFavourite = false
+                        binding.favouriteButton.setImageResource(R.drawable.ic_baseline_bookmark_border_24)
                     }
                 }
 
@@ -76,6 +93,47 @@ class DetailDiscussionActivity : AppCompatActivity() {
                 }
             }
         }
+
+        binding.favouriteButton.setOnClickListener {
+            if(isFavourite){
+                discussionsViewModel.deleteFavourite(currentUser.uid, dataDiscussion.discussionId).observe(this){ state ->
+                    when(state){
+                        is Result.Loading -> {
+                            isFavourite = true
+                        }
+
+                        is Result.Success -> {
+                            isFavourite = false
+                            binding.favouriteButton.setImageResource(R.drawable.ic_baseline_bookmark_border_24)
+                        }
+
+                        is Result.Error -> {
+                            isFavourite = true
+                            Toast.makeText(this, state.error, Toast.LENGTH_SHORT).show()
+                        }
+                    }
+                }
+            }else{
+                discussionsViewModel.addFavourite(currentUser.uid, dataDiscussion.discussionId).observe(this){ state ->
+                    when(state){
+                        is Result.Loading -> {
+                            isFavourite = false
+                        }
+
+                        is Result.Success -> {
+                            isFavourite = true
+                            binding.favouriteButton.setImageResource(R.drawable.ic_baseline_bookmark_24)
+                        }
+
+                        is Result.Error -> {
+                            isFavourite = false
+                            Toast.makeText(this, state.error, Toast.LENGTH_SHORT).show()
+                        }
+                    }
+                }
+            }
+        }
+
         binding.sendButton.setOnClickListener {
             imm.hideSoftInputFromWindow(binding.linearLayout.windowToken, 0)
 
@@ -123,10 +181,6 @@ class DetailDiscussionActivity : AppCompatActivity() {
 
                 is Result.Error -> {
                     isLoading(false)
-                    Snackbar.make(binding.root, result.error, Snackbar.LENGTH_LONG)
-                        .setBackgroundTint(resources.getColor(R.color.error))
-                        .setActionTextColor(resources.getColor(R.color.white))
-                        .show()
                 }
             }
         }
