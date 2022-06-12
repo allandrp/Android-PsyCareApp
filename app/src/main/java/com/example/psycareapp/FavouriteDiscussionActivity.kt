@@ -62,12 +62,16 @@ class FavouriteDiscussionActivity : AppCompatActivity() {
                             binding.rvFavourite.adapter = adapterDiscussion
                             binding.rvFavourite.layoutManager = LinearLayoutManager(this)
                         }else{
+                            val listDiscussionSort = arrayListOf<DiscussionItem>()
+                            binding.rvFavourite.adapter = DiscussionAdapter(listDiscussionSort)
                             binding.imageViewEmptyFavourite.visibility = View.VISIBLE
                             binding.textViewEmptyDiscussion.visibility = View.VISIBLE
                         }
                     }
 
                     is Result.Error -> {
+                        val listDiscussionSort = arrayListOf<DiscussionItem>()
+                        binding.rvFavourite.adapter = DiscussionAdapter(listDiscussionSort)
                         Utils.isLoading(binding.progressBarFavourite, false)
                         binding.imageViewEmptyFavourite.visibility = View.VISIBLE
                         binding.textViewEmptyDiscussion.visibility = View.VISIBLE
