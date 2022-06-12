@@ -26,6 +26,12 @@ interface ApiPsyCareService {
         @Field("username") username: String
     ): Call<PostDiscussionsResponse>
 
+    @POST("predict/{idUser}")
+    fun predictData(
+        @Path("idUser") id: String,
+        @Body listAnswer: Predict
+    ): Call<PredictResponse>
+
     @GET("users/{idUser}")
     suspend fun getUsers(@Path("idUser") idUser: String): UsersResponse
 
@@ -44,6 +50,4 @@ interface ApiPsyCareService {
         @Field("isi") description: String,
         @Field("email") email: String
     ): ReplyResponse
-
-
 }

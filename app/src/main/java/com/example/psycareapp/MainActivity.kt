@@ -65,26 +65,26 @@ class MainActivity : AppCompatActivity() {
             "id"
         }
 
-        homeViewModel.getArticles(language).observe(this){
-            when(it){
-                is Result.Success -> {
-                    Utils.isLoading(binding.progressBar, false)
-                    binding.recyclerViewNews.adapter = adapterNews
-                    binding.recyclerViewNews.layoutManager = LinearLayoutManager(this)
-                    binding.recyclerViewNews.setHasFixedSize(true)
-                    binding.recyclerViewNews.isNestedScrollingEnabled = false
-                    adapterNews.submitList(it.data.articles)
-                }
-
-                is Result.Error -> {
-                    Utils.isLoading(binding.progressBar, false)
-                }
-
-                is Result.Loading ->{
-                    Utils.isLoading(binding.progressBar, false)
-                }
-            }
-        }
+//        homeViewModel.getArticles(language).observe(this){
+//            when(it){
+//                is Result.Success -> {
+//                    Utils.isLoading(binding.progressBar, false)
+//                    binding.recyclerViewNews.adapter = adapterNews
+//                    binding.recyclerViewNews.layoutManager = LinearLayoutManager(this)
+//                    binding.recyclerViewNews.setHasFixedSize(true)
+//                    binding.recyclerViewNews.isNestedScrollingEnabled = false
+//                    adapterNews.submitList(it.data.articles)
+//                }
+//
+//                is Result.Error -> {
+//                    Utils.isLoading(binding.progressBar, false)
+//                }
+//
+//                is Result.Loading ->{
+//                    Utils.isLoading(binding.progressBar, false)
+//                }
+//            }
+//        }
 
         binding.buttonTest.setOnClickListener {
             val intent = Intent(this@MainActivity, TestActivity::class.java)
