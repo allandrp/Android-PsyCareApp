@@ -9,7 +9,7 @@
     <string name="username">Username</string>
     <string name="email" translatable="false">E-mail</string>
     <string name="password">Password</string>
-    <string name="your_results">YOUR RESULTS</string>
+    <string name="your_results">RESULTS</string>
     <string name="anxiety">Anxiety:</string>
     <string name="normal">NORMAL</string>
     <string name="dummy_test_desc">Medium Depression Level is a type of Depression that occur because of …</string>

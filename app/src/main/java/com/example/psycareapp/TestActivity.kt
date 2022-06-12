@@ -12,6 +12,7 @@ import com.example.psycareapp.data.DataTestResultItem
 import com.example.psycareapp.data.PostPredictObject
 import com.example.psycareapp.data.TestResponse
 import com.example.psycareapp.databinding.ActivityTestBinding
+import com.example.psycareapp.utils.Utils
 import com.example.psycareapp.viewmodel.TestViewModel
 import com.example.psycareapp.viewmodel.ViewModelFactory
 import retrofit2.Call
@@ -60,6 +61,8 @@ class TestActivity : AppCompatActivity() {
 
     private fun postTest(userId: String, data:PostPredictObject){
 
+        Utils.isLoading(binding.progressBar3, true)
+        binding.buttonSubmitTest.isEnabled = false
         val listItem = arrayListOf<List<DataTestResultItem>>()
         val testResultItem = arrayListOf<DataTestResultItem>()
 
@@ -85,13 +88,18 @@ class TestActivity : AppCompatActivity() {
                         val intent = Intent(this@TestActivity, TestResultActivity::class.java)
                         intent.putParcelableArrayListExtra("testResultItems", testResultItem)
                         startActivity(intent)
+                        Utils.isLoading(binding.progressBar3, false)
                         finish()
                     }
                     else{
+                        Utils.isLoading(binding.progressBar3, false)
+                        binding.buttonSubmitTest.isEnabled = true
                         Log.d("onResponseTAData", response.body().toString())
                     }
                 }
                 else{
+                    Utils.isLoading(binding.progressBar3, false)
+                    binding.buttonSubmitTest.isEnabled = true
                     Log.d("onResponseSucc", "Response Unsuccessful")
                 }
 
@@ -99,6 +107,8 @@ class TestActivity : AppCompatActivity() {
             }
 
             override fun onFailure(call: Call<TestResponse>, t: Throwable) {
+                Utils.isLoading(binding.progressBar3, false)
+                binding.buttonSubmitTest.isEnabled = true
                 Log.d("FailureHistoryTA", t.message.toString())
             }
         })
