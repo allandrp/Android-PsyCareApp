@@ -3,10 +3,8 @@ package com.example.psycareapp.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.psycareapp.R
 import com.example.psycareapp.data.TestItem
 import com.example.psycareapp.databinding.QuestionItemBinding
-import com.example.psycareapp.utils.Utils
 
 class TestAdapter(private val testItem: ArrayList<TestItem>): RecyclerView.Adapter<TestAdapter.ViewHolder>() {
 

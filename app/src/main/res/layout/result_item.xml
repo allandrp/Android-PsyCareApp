@@ -2,7 +2,7 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_gravity="center"
     app:cardCornerRadius="10dp"
@@ -25,22 +25,26 @@
                 android:id="@+id/category"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                tools:text="@string/anxiety"
-                android:fontFamily="@font/poppins"
-                android:textSize="20sp"
                 android:layout_gravity="center"
-                android:layout_marginBottom="13dp"/>
+                android:layout_marginBottom="13dp"
+                android:fontFamily="@font/poppins"
+                android:textSize="26sp"
+                android:textStyle="bold"
+                tools:text="@string/anxiety"
+                android:layout_marginTop="8dp"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginHorizontal="16dp">
+                android:layout_marginHorizontal="16dp"
+                android:gravity="center">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/status"
+                    android:textStyle="bold"
                     android:textSize="20sp"
                     android:fontFamily="@font/poppins"/>
 
@@ -50,6 +54,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="16dp"
                     android:textSize="20sp"
+                    android:textStyle="bold"
                     tools:text="@string/moderate"
                     android:fontFamily="@font/poppins"/>
 
@@ -67,15 +72,17 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="16dp"
                 android:text="@string/what_you_can_do"
-                android:fontFamily="@font/poppins"/>
+                android:fontFamily="@font/poppins"
+                android:layout_gravity="center"
+                android:textStyle="bold"/>
 
             <TextView
                 android:id="@+id/what_to_do"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/dummy_test_desc"
                 android:layout_margin="16dp"
-                android:fontFamily="@font/poppins"/>
+                android:fontFamily="@font/poppins"
+                tools:text="@string/dummy_test_desc"/>
         </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

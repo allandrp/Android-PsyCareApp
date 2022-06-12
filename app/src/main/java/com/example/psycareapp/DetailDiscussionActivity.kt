@@ -10,20 +10,13 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.psycareapp.adapter.ReplyAdapter
 import com.example.psycareapp.data.DiscussionItem
-import com.example.psycareapp.data.DiscussionsResponse
 import com.example.psycareapp.data.ReplyItem
-import com.example.psycareapp.data.User
 import com.example.psycareapp.databinding.ActivityDetailDiscussionBinding
 import com.example.psycareapp.repository.Result
 import com.example.psycareapp.viewmodel.DiscussionViewModel
 import com.example.psycareapp.viewmodel.ViewModelFactory
-import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
-import com.google.firebase.firestore.FieldValue
-import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.ktx.Firebase
-import java.util.*
 
 
 class DetailDiscussionActivity : AppCompatActivity() {
@@ -57,7 +50,7 @@ class DetailDiscussionActivity : AppCompatActivity() {
         binding.timestampDiscussion.setReferenceTime(dataDiscussion.date)
 
         currentUser = fbAuth.currentUser!!
-        var username = currentUser?.email!!.split("@")?.get(0)
+        var username = currentUser.email!!.split("@").get(0)
 
         discussionsViewModel.getUser(currentUser.uid).observe(this){ result->
             when(result){
@@ -158,7 +151,7 @@ class DetailDiscussionActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        dataDiscussion?.let { getReply(it) }
+        dataDiscussion.let { getReply(it) }
     }
 
 

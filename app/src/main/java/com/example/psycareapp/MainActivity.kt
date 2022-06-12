@@ -4,9 +4,9 @@ import android.content.Context
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -88,6 +88,7 @@ class MainActivity : AppCompatActivity() {
 
         binding.buttonTest.setOnClickListener {
             val intent = Intent(this@MainActivity, TestActivity::class.java)
+            intent.putExtra("userId", currentUser?.uid)
             startActivity(intent)
         }
 
@@ -97,6 +98,35 @@ class MainActivity : AppCompatActivity() {
         binding.buttonDiscussion.setOnClickListener {
             val intent = Intent(this@MainActivity, DiscussionActivity::class.java)
             startActivity(intent)
+        }
+
+        binding.avatarImageProfileHome.setOnClickListener {
+            val intent = Intent(this@MainActivity, UserProfileActivity::class.java)
+
+            currentUser?.uid?.let { it1 ->
+                homeViewModel.getUser(it1).observe(this){ result ->
+                    when(result){
+                        is Result.Success -> {
+                            val username = result.data.dataUser?.username
+                            if(username != null){
+                                intent.putExtra("username", username.toString())
+                                intent.putExtra("userId", currentUser.uid)
+                                Log.d("UsernameIntent", username)
+                                startActivity(intent)
+                            }else{
+                                intent.putExtra("username", fbAuth.currentUser!!.email?.split("@")?.get(0))
+                                Log.d("UsernameIntent", "fbAuthEmail")
+                                startActivity(intent)
+                            }
+                        }
+
+                        is Result.Error -> {
+                            Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show()
+                            Log.d("UsernameIntent", "Error")
+                        }
+                    }
+                }
+            }
         }
 
     }

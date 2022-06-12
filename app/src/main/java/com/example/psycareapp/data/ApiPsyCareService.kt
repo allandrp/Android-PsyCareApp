@@ -1,17 +1,15 @@
 package com.example.psycareapp.data
 
 import retrofit2.Call
-import retrofit2.Callback
 import retrofit2.http.*
-import kotlin.collections.ArrayList
 
 interface ApiPsyCareService {
 
-    @GET("discussions")
+    @GET("api/discussions")
     suspend fun getDiscussions(): DiscussionsResponse
 
     @FormUrlEncoded
-    @POST("users/fav/{idUser}")
+    @POST("api/users/fav/{idUser}")
     suspend fun addFavourite(
         @Path("idUser") idUser: String,
         @Field("discussionId") idDiscussion: String
@@ -25,7 +23,7 @@ interface ApiPsyCareService {
     ): UsersResponse
 
     @FormUrlEncoded
-    @POST("discussions")
+    @POST("api/discussions")
     suspend fun postDiscussions(
         @Field("id_creator") id: String,
         @Field("nickname") nickname: String,
@@ -34,23 +32,23 @@ interface ApiPsyCareService {
     ): PostDiscussionsResponse
 
     @FormUrlEncoded
-    @POST("users")
+    @POST("api/users")
     fun addUserData(
         @Field("userId") id: String,
         @Field("username") username: String
     ): Call<PostDiscussionsResponse>
 
-    @GET("users/{idUser}")
+    @GET("api/users/{idUser}")
     suspend fun getUsers(@Path("idUser") idUser: String): UsersResponse
 
-    @GET("psikolog")
+    @GET("api/psikolog")
     suspend fun getPsikolog(): PsikologResponse
 
-    @GET("discussions/reply/{idDiscussion}")
+    @GET("api/discussions/reply/{idDiscussion}")
     suspend fun getReply(@Path("idDiscussion") idDiscussion: String): ReplyResponse
 
     @FormUrlEncoded
-    @POST("discussions/reply/{idDiscussion}")
+    @POST("api/discussions/reply/{idDiscussion}")
     suspend fun postReply(
         @Path("idDiscussion") idDiscussion: String,
         @Field("id_creator") id: String,
@@ -58,4 +56,28 @@ interface ApiPsyCareService {
         @Field("isi") description: String,
         @Field("email") email: String
     ): ReplyResponse
+
+    @GET("api/users/histories/{userId}")
+    fun getTestHistory(@Path("userId") userId:String): Call<TestHistoryResponse>
+
+    @POST("api/predict/{userId}")
+    fun postTest(
+        @Path("userId") userId: String,
+        @Body data: PostPredictObject
+    ): Call<TestResponse>
+
+//    @FormUrlEncoded
+//    @POST("api/predict/{userId}")
+//    fun postTest(
+//        @Path("userId") userId: String,
+//        @Field("data") data: List<Int?>
+//    ): Call<TestResponse>
+
+//    @FormUrlEncoded
+//    @POST("/api/predict/{userId}")
+//    fun postTest(
+//        @Path("userId") userId: String,
+//        @Field("data") data: String
+//    ): Call<TestResponse>
+
 }

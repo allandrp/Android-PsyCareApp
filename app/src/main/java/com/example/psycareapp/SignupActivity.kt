@@ -2,16 +2,12 @@ package com.example.psycareapp
 
 import android.content.Context
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import android.util.Patterns
 import android.view.inputmethod.InputMethodManager
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.doOnTextChanged
-import com.example.psycareapp.customview.EmailEditText
-import com.example.psycareapp.customview.PasswordEditText
 import com.example.psycareapp.data.ApiConfig
 import com.example.psycareapp.data.PostDiscussionsResponse
 import com.example.psycareapp.databinding.ActivitySignupBinding
@@ -19,8 +15,6 @@ import com.example.psycareapp.utils.Utils
 import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
-import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.ktx.Firebase
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

@@ -6,7 +6,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.psycareapp.data.DiscussionItem
 import com.example.psycareapp.data.ReplyItem
-import com.example.psycareapp.data.User
 import com.example.psycareapp.databinding.ReplyItemBinding
 
 class ReplyAdapter(private val discussionList: ArrayList<ReplyItem>, private val discussionClick: DiscussionItem): RecyclerView.Adapter<ReplyAdapter.ViewHolder>() {

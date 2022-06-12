@@ -3,12 +3,10 @@ package com.example.psycareapp.adapter
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.psycareapp.DetailDiscussionActivity
 import com.example.psycareapp.data.DiscussionItem
 import com.example.psycareapp.databinding.DiscussionItemBinding
-import kotlin.collections.ArrayList
 
 class DiscussionAdapter(private val discussionList: ArrayList<DiscussionItem>): RecyclerView.Adapter<DiscussionAdapter.ViewHolder>() {
 

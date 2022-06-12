@@ -3,7 +3,6 @@ package com.example.psycareapp
 import android.os.Bundle
 import android.view.View
 import android.view.WindowManager
-import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.example.psycareapp.databinding.ActivityAddDiscussionBinding
@@ -12,9 +11,6 @@ import com.example.psycareapp.viewmodel.DiscussionViewModel
 import com.example.psycareapp.viewmodel.ViewModelFactory
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.ktx.Firebase
-import java.util.*
 
 class AddDiscussionActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAddDiscussionBinding
@@ -27,7 +23,7 @@ class AddDiscussionActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         window.setFlags(
             WindowManager.LayoutParams.FLAG_FULLSCREEN,
-            WindowManager.LayoutParams.FLAG_FULLSCREEN);
+            WindowManager.LayoutParams.FLAG_FULLSCREEN)
         binding = ActivityAddDiscussionBinding.inflate(layoutInflater)
         setContentView(binding.root)
 

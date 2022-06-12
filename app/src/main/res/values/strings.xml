@@ -51,4 +51,5 @@
     <string name="invalid_password">Password must be at least 6 characters</string>
     <string name="invalid_username">Username must be at least 6 characters</string>
     <string name="invalid_empty">Can\'t empty</string>
+    <string name="profile_picture">Profile_Picture</string>
 </resources>

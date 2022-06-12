@@ -1,15 +1,13 @@
 package com.example.psycareapp
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.ImageView
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.psycareapp.adapter.DiscussionAdapter
 import com.example.psycareapp.data.DiscussionItem
-import com.example.psycareapp.data.UsersResponse
 import com.example.psycareapp.databinding.ActivityDiscussionBinding
 import com.example.psycareapp.repository.Result
 import com.example.psycareapp.utils.Utils

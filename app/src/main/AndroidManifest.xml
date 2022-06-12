@@ -14,6 +14,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PsyCareApp">
         <activity
+            android:name=".FavouriteDiscussionsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".TestHistoryActivity"
+            android:exported="false" />
+        <activity
+            android:name=".UserProfileActivity"
+            android:exported="false" />
+        <activity
             android:name=".PsychologistActivity"
             android:exported="false" />
         <activity

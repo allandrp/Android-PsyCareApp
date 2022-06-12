@@ -11,8 +11,7 @@ import com.example.psycareapp.data.ArticlesItem
 import com.example.psycareapp.databinding.NewsItemBinding
 
 class NewsAdapter : ListAdapter<ArticlesItem, NewsAdapter.NewsViewHolder>(DIFF_CALLBACK) {
-    class NewsViewHolder(val binding: NewsItemBinding): RecyclerView.ViewHolder(binding.root) {
-    }
+    class NewsViewHolder(val binding: NewsItemBinding): RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewsViewHolder {
         val binding = NewsItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)

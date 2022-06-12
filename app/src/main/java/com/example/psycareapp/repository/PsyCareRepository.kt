@@ -3,7 +3,6 @@ package com.example.psycareapp.repository
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
 import com.example.psycareapp.data.*
-import kotlin.collections.ArrayList
 
 class PsyCareRepository(private val apiService: ApiPsyCareService){
     fun getPsikolog(): LiveData<Result<PsikologResponse>> = liveData{
