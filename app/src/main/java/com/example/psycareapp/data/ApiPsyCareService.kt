@@ -8,6 +8,9 @@ interface ApiPsyCareService {
     @GET("api/discussions")
     suspend fun getDiscussions(): DiscussionsResponse
 
+    @GET("api/users/favourite/{idUser}")
+    suspend fun getFavourites(@Path("idUser") idUser: String): DiscussionsResponse
+
     @FormUrlEncoded
     @POST("api/users/fav/{idUser}")
     suspend fun addFavourite(
@@ -16,7 +19,7 @@ interface ApiPsyCareService {
     ): UsersResponse
 
     @FormUrlEncoded
-    @HTTP(method = "DELETE", path = "users/fav/{idUser}", hasBody = true)
+    @HTTP(method = "DELETE", path = "api/users/fav/{idUser}", hasBody = true)
     suspend fun deleteFavourite(
         @Path("idUser") idUser: String,
         @Field("discussionId") idDiscussion: String
@@ -66,18 +69,5 @@ interface ApiPsyCareService {
         @Body data: PostPredictObject
     ): Call<TestResponse>
 
-//    @FormUrlEncoded
-//    @POST("api/predict/{userId}")
-//    fun postTest(
-//        @Path("userId") userId: String,
-//        @Field("data") data: List<Int?>
-//    ): Call<TestResponse>
-
-//    @FormUrlEncoded
-//    @POST("/api/predict/{userId}")
-//    fun postTest(
-//        @Path("userId") userId: String,
-//        @Field("data") data: String
-//    ): Call<TestResponse>
 
 }

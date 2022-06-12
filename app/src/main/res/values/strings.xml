@@ -1,13 +1,10 @@
 <resources>
     <string name="app_name" translatable="false">PsyCare</string>
-    <string name="input_username">Input Username</string>
     <string name="psycare" translatable="false">PsyCare</string>
-    <string name="input_password">Input Password</string>
     <string name="login">LOGIN</string>
     <string name="dont_have_an_account">Don’t have an account yet?</string>
     <string name="daftar">Register</string>
     <string name="we_care" translatable="false">We care what you care the most</string>
-    <string name="input_email">Input your email</string>
     <string name="dummy_desc_discussion">saya mau curhat tentang teman saya yang baru saja pergi meninggalkan saya, saya jadi sangat sedih dan stress untuk menghadapi masalahini, bagaimana seharusnya saya bertindak</string>
     <string name="username">Username</string>
     <string name="email" translatable="false">E-mail</string>
@@ -15,13 +12,10 @@
     <string name="your_results">YOUR RESULTS</string>
     <string name="anxiety">Anxiety:</string>
     <string name="normal">NORMAL</string>
-    <string name="suggestions">SUGGESTIONS</string>
     <string name="dummy_test_desc">Medium Depression Level is a type of Depression that occur because of …</string>
     <string name="stress">Stress:</string>
-    <string name="severe">Severe</string>
     <string name="depression">Depression:</string>
     <string name="moderate">Moderate</string>
-    <string name="title_activity_maps">MapsActivity</string>
     <string name="map_menu">Map Menu</string>
     <string name="test_intro">if you think you feel bad you can take this test, to measure your mental health</string>
     <string name="take_test">Take test</string>

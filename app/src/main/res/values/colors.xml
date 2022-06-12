@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="purple_200">#FFBB86FC</color>
-    <color name="purple_500">#FF6200EE</color>
     <color name="purple_700">#FF3700B3</color>
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
@@ -11,9 +10,8 @@
     <color name="blue_dark_text_main">#3A4E66</color>
     <color name="blue_theme_main">#76AACB</color>
     <color name="error">#B00020</color>
+    <color name="normal_color">#01C85C</color>
+    <color name="moderate_color">#FF9900</color>
+    <color name="severe_color">#B00020</color>
 
-    <color name="button_green">#01C85C</color>
-    <color name="button_green_disabled">#7AC19B</color>
-
-    <color name="button_grey">#C4C4C4</color>
 </resources>

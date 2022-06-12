@@ -14,14 +14,17 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PsyCareApp">
         <activity
-            android:name=".FavouriteDiscussionsActivity"
-            android:exported="false" />
+            android:name=".FavouriteDiscussionActivity"
+            android:exported="false"
+            android:label="Favourites"/>
         <activity
             android:name=".TestHistoryActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:label="History"/>
         <activity
             android:name=".UserProfileActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:label="Profile"/>
         <activity
             android:name=".PsychologistActivity"
             android:exported="false" />
@@ -36,11 +39,10 @@
         <activity
             android:name=".MapsActivity"
             android:exported="false" />
-
         <activity
             android:name=".TestResultActivity"
-            android:exported="false" />
-
+            android:exported="false"
+            android:label="Result"/>
         <activity
             android:name=".SplashScreenActivity"
             android:exported="true"

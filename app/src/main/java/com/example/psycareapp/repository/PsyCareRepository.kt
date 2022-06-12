@@ -55,7 +55,31 @@ class PsyCareRepository(private val apiService: ApiPsyCareService){
         }catch (e: Exception){
             emit(Result.Error(e.message.toString()))
         }
+    }
 
+    fun getFavourites(idUser: String): LiveData<Result<DiscussionsResponse>> = liveData{
+        emit(Result.Loading)
+
+        try {
+            val response = apiService.getFavourites(idUser)
+
+            when {
+                response.listDiscussions.isNullOrEmpty() -> {
+                    emit(Result.Error("No data"))
+                }
+
+                response.status != "ok" ->{
+                    emit(Result.Error("Error"))
+                }
+
+                else -> {
+                    emit(Result.Success(response))
+                }
+            }
+
+        }catch (e: Exception){
+            emit(Result.Error(e.message.toString()))
+        }
     }
 
     fun postDiscussions(id: String, nickname: String, description: String, email: String): LiveData<Result<PostDiscussionsResponse>> = liveData{
