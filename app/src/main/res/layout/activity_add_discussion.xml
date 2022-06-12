@@ -8,7 +8,7 @@
 
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/username_post_layout"
+        android:id="@+id/username_add_discussion_post_layout"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -35,9 +35,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:hint="@string/discussion_hint"
-        app:layout_constraintEnd_toEndOf="@+id/username_post_layout"
-        app:layout_constraintStart_toStartOf="@+id/username_post_layout"
-        app:layout_constraintTop_toBottomOf="@+id/username_post_layout">
+        app:layout_constraintEnd_toEndOf="@+id/username_add_discussion_post_layout"
+        app:layout_constraintStart_toStartOf="@+id/username_add_discussion_post_layout"
+        app:layout_constraintTop_toBottomOf="@+id/username_add_discussion_post_layout">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/desc_discussion"
@@ -63,7 +63,7 @@
         android:layout_width="42dp"
         android:layout_height="35dp"
         app:layout_constraintBottom_toBottomOf="@+id/btn_send_post"
-        app:layout_constraintStart_toStartOf="@+id/username_post_layout"
+        app:layout_constraintStart_toStartOf="@+id/username_add_discussion_post_layout"
         app:layout_constraintTop_toTopOf="@+id/btn_send_post"
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/ic_close_24" />

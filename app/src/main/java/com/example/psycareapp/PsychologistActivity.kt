@@ -1,8 +1,11 @@
 package com.example.psycareapp
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
@@ -65,6 +68,26 @@ class PsychologistActivity : AppCompatActivity() {
                         .show()
                 }
             }
+        }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        val inflater = menuInflater
+        inflater.inflate(R.menu.options_menu, menu)
+        menu.findItem(R.id.logout_menu).isVisible = false
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when(item.itemId){
+            R.id.map_menu -> {
+                val intent = Intent(this, MapsActivity::class.java)
+                intent.putParcelableArrayListExtra("listPsychologist", listPshycologist)
+                startActivity(intent)
+                true
+            }
+
+            else -> true
         }
     }
 }

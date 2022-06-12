@@ -10,7 +10,7 @@ import com.example.psycareapp.data.DiscussionItem
 import com.example.psycareapp.databinding.DiscussionItemBinding
 import kotlin.collections.ArrayList
 
-class DiscussionAdapter(private val discussionList: ArrayList<DiscussionItem>, private val onSavedDiscussion: OnSavedDiscussion): RecyclerView.Adapter<DiscussionAdapter.ViewHolder>() {
+class DiscussionAdapter(private val discussionList: ArrayList<DiscussionItem>): RecyclerView.Adapter<DiscussionAdapter.ViewHolder>() {
 
     class ViewHolder(val binding: DiscussionItemBinding): RecyclerView.ViewHolder(binding.root)
 
@@ -27,13 +27,7 @@ class DiscussionAdapter(private val discussionList: ArrayList<DiscussionItem>, p
 
         holder.binding.usernameDiscussion.text = discussion.nickname
         holder.binding.descDiscussion.text = discussion.isi
-        if (discussion.date != null) {
-            holder.binding.timestampDiscussion.setReferenceTime(discussion.date)
-        }
-
-        holder.binding.imageView4.setOnClickListener {
-            onSavedDiscussion.onClickBookmark(position, holder.binding.imageView4)
-        }
+        holder.binding.timestampDiscussion.setReferenceTime(discussion.date)
 
         holder.itemView.setOnClickListener {
             val intentDetail = Intent(holder.itemView.context, DetailDiscussionActivity::class.java)
@@ -44,7 +38,4 @@ class DiscussionAdapter(private val discussionList: ArrayList<DiscussionItem>, p
 
     override fun getItemCount(): Int = discussionList.size
 
-    interface OnSavedDiscussion{
-        fun onClickBookmark(position: Int, imgView: ImageView)
-    }
 }

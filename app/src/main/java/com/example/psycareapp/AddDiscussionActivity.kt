@@ -41,7 +41,7 @@ class AddDiscussionActivity : AppCompatActivity() {
 
         binding.btnSendPost.setOnClickListener {
             if(binding.usernamePost.text.toString().isEmpty()){
-                binding.usernamePostLayout.error = "Can't Empty"
+                binding.usernameAddDiscussionPostLayout.error = "Can't Empty"
             }
 
             if(binding.descDiscussion.text.toString().isEmpty()){

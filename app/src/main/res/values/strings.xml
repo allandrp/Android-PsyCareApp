@@ -10,7 +10,7 @@
     <string name="input_email">Input your email</string>
     <string name="dummy_desc_discussion">saya mau curhat tentang teman saya yang baru saja pergi meninggalkan saya, saya jadi sangat sedih dan stress untuk menghadapi masalahini, bagaimana seharusnya saya bertindak</string>
     <string name="username">Username</string>
-    <string name="email" translatable="false">email</string>
+    <string name="email" translatable="false">E-mail</string>
     <string name="password">Password</string>
     <string name="your_results">YOUR RESULTS</string>
     <string name="anxiety">Anxiety:</string>
@@ -47,4 +47,8 @@
     <string name="send_text">Send</string>
     <string name="psychologist_empty">NO PSYCHOLOGIST HERE</string>
     <string name="greeting_default">Hi User, How Was Your Day ?</string>
+    <string name="invalid_email">Email address invalid</string>
+    <string name="invalid_password">Password must be at least 6 characters</string>
+    <string name="invalid_username">Username must be at least 6 characters</string>
+    <string name="invalid_empty">Can\'t empty</string>
 </resources>

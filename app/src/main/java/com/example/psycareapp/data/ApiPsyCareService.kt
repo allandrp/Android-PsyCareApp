@@ -11,6 +11,20 @@ interface ApiPsyCareService {
     suspend fun getDiscussions(): DiscussionsResponse
 
     @FormUrlEncoded
+    @POST("users/fav/{idUser}")
+    suspend fun addFavourite(
+        @Path("idUser") idUser: String,
+        @Field("discussionId") idDiscussion: String
+    ): UsersResponse
+
+    @FormUrlEncoded
+    @HTTP(method = "DELETE", path = "users/fav/{idUser}", hasBody = true)
+    suspend fun deleteFavourite(
+        @Path("idUser") idUser: String,
+        @Field("discussionId") idDiscussion: String
+    ): UsersResponse
+
+    @FormUrlEncoded
     @POST("discussions")
     suspend fun postDiscussions(
         @Field("id_creator") id: String,
@@ -44,6 +58,4 @@ interface ApiPsyCareService {
         @Field("isi") description: String,
         @Field("email") email: String
     ): ReplyResponse
-
-
 }

@@ -81,7 +81,7 @@ class MainActivity : AppCompatActivity() {
                 }
 
                 is Result.Loading ->{
-                    Utils.isLoading(binding.progressBar, false)
+                    Utils.isLoading(binding.progressBar, true)
                 }
             }
         }
@@ -104,6 +104,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         val inflater = menuInflater
         inflater.inflate(R.menu.options_menu, menu)
+        menu.findItem(R.id.map_menu).isVisible = false
         return true
     }
 
